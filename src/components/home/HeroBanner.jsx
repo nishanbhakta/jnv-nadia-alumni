@@ -60,16 +60,16 @@ export default function HeroBanner() {
           <img
             src="/background.jpg"
             alt="Jawahar Navodaya Vidyalaya Nadia Campus"
-            className="w-full h-full object-cover object-[center_35%] opacity-25 sm:opacity-35 lg:opacity-100 transition-opacity drop-shadow-xs select-none"
+            className="w-full h-full object-cover object-[center_32%] opacity-65 sm:opacity-80 lg:opacity-100 transition-opacity drop-shadow-xs select-none"
           />
-          {/* Left subtle feathered gradient into clean white background */}
-          <div className="absolute inset-y-0 left-0 w-1/3 sm:w-1/2 lg:w-2/5 bg-gradient-to-r from-white via-white/80 via-30% to-transparent" />
+          {/* Desktop: Left subtle feathered gradient into clean white background */}
+          <div className="hidden lg:block absolute inset-y-0 left-0 w-1/3 sm:w-1/2 lg:w-2/5 bg-gradient-to-r from-white via-white/80 via-30% to-transparent" />
           
-          {/* Mobile contrast wash to ensure headline and button legibility */}
-          <div className="absolute inset-0 bg-white/70 sm:bg-white/55 lg:hidden" />
+          {/* Mobile: Directional gradient keeping text readable at top while campus building & flowers shine through below */}
+          <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-white/95 via-white/70 via-50% to-white/10" />
           
           {/* Bottom subtle edge blend */}
-          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white via-white/40 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/30 to-transparent" />
 
           {/* Layered Maroon Wave Ribbon (accentuating the campus photo base) */}
           <div className="absolute -bottom-1 right-0 w-full sm:w-[90%] lg:w-[80%] xl:w-[70%] h-18 sm:h-22 lg:h-26 pointer-events-none overflow-hidden">
