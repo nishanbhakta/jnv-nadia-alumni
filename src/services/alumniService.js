@@ -1,6 +1,7 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { mockDb } from './mockData';
 import { getSeenFeaturedSession, recordSeenFeaturedSession } from '../lib/visitor';
+import { dailyShuffle } from '../lib/dailyShuffle';
 
 // Generate URL slug from full name
 export function slugify(name) {
@@ -101,7 +102,113 @@ export async function getRecentStories(limit = 6) {
 }
 
 /**
- * Fetch stories grouped by batch (passing_year) for Section 3
+ * Fetch stories exclusively from the most recent alumni batch (Section 3).
+ * Does not mix stories from older batches into this section.
+ */
+export async function getRecentBatchStories() {
+  if (isSupabaseConfigured()) {
+    try {
+      // 1. Determine latest passing_year among all active alumni
+      const { data: latestAlumni, error: yearError } = await supabase
+        .from('alumni')
+        .select('passing_year')
+        .eq('is_active', true)
+        .order('passing_year', { ascending: false })
+        .limit(1);
+
+      if (yearError) throw yearError;
+
+      const recentYear = latestAlumni?.[0]?.passing_year;
+      if (!recentYear) {
+        return { passingYear: null, stories: [] };
+      }
+
+      // 2. Fetch stories strictly from alumni of that most recent batch
+      const { data: batchAlumni, error: storiesError } = await supabase
+        .from('alumni')
+        .select(`
+          id,
+          full_name,
+          slug,
+          passing_year,
+          current_position,
+          profile_image_url,
+          story_sections (
+            id,
+            heading,
+            content,
+            created_at
+          )
+        `)
+        .eq('is_active', true)
+        .eq('passing_year', recentYear);
+
+      if (storiesError) throw storiesError;
+
+      const stories = [];
+      for (const al of (batchAlumni || [])) {
+        for (const st of (al.story_sections || [])) {
+          stories.push({
+            id: st.id,
+            heading: st.heading,
+            contentPreview: st.content.length > 150 ? st.content.substring(0, 150) + '...' : st.content,
+            created_at: st.created_at,
+            authorName: al.full_name,
+            authorSlug: al.slug,
+            authorImage: al.profile_image_url,
+            authorPosition: al.current_position,
+            passingYear: al.passing_year,
+          });
+        }
+      }
+
+      return {
+        passingYear: recentYear,
+        stories: stories.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)),
+      };
+    } catch (err) {
+      console.warn('Supabase recent batch stories query failed, falling back to mock:', err);
+    }
+  }
+
+  // Mock implementation
+  const activeAlumni = mockDb.getAlumni().filter(a => a.is_active);
+  if (activeAlumni.length === 0) {
+    return { passingYear: null, stories: [] };
+  }
+
+  const recentYear = Math.max(...activeAlumni.map(a => a.passing_year));
+  const recentBatchAlumni = activeAlumni.filter(a => a.passing_year === recentYear);
+  const alumniIdSet = new Set(recentBatchAlumni.map(a => a.id));
+  const alumniMap = new Map(recentBatchAlumni.map(a => [a.id, a]));
+
+  const allStories = mockDb.getStories();
+  const batchStories = allStories
+    .filter(s => alumniIdSet.has(s.alumni_id))
+    .map(s => {
+      const author = alumniMap.get(s.alumni_id);
+      return {
+        id: s.id,
+        heading: s.heading,
+        contentPreview: s.content.length > 150 ? s.content.substring(0, 150) + '...' : s.content,
+        created_at: s.created_at,
+        authorName: author.full_name,
+        authorSlug: author.slug,
+        authorImage: author.profile_image_url,
+        authorPosition: author.current_position,
+        passingYear: author.passing_year,
+      };
+    })
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+  return {
+    passingYear: recentYear,
+    stories: batchStories,
+  };
+}
+
+/**
+ * Fetch stories grouped by batch (passing_year) for legacy fallback
  */
 export async function getBatchStories() {
   if (isSupabaseConfigured()) {
@@ -192,9 +299,11 @@ function processBatchGroups(alumniList) {
 }
 
 /**
- * Weighted Random Selection for Section 4 (Featured Alumni)
- * Combines completeness, views, likes, story availability, recency, and randomness.
- * Avoids showing duplicate profiles seen in current browser session.
+ * Dynamic Alumni Profile Rotation for Section 4 (Featured Alumni)
+ * Automatically performs a deterministic date-based daily shuffle.
+ * - Shuffles once per day so all visitors see the identical rotation throughout that day.
+ * - Remains completely stable across page reloads on that day.
+ * - Automatically advances to a new arrangement the next day across all devices.
  */
 export async function getFeaturedAlumni(limit = 4) {
   let alumniList = [];
@@ -230,8 +339,6 @@ export async function getFeaturedAlumni(limit = 4) {
     stories = mockDb.getStories();
   }
 
-  const seenSessionSlugs = getSeenFeaturedSession();
-
   // Pre-calculate metrics for each alumnus
   const likesCountMap = {};
   for (const l of likes) {
@@ -248,82 +355,51 @@ export async function getFeaturedAlumni(limit = 4) {
     storiesCountMap[s.alumni_id] = (storiesCountMap[s.alumni_id] || 0) + 1;
   }
 
-  // Score each alumnus with weighted attributes
-  const scoredAlumni = alumniList.map(a => {
-    // 1. Profile completeness score (0 to 30)
-    let completeness = 0;
-    if (a.profile_image_url) completeness += 10;
-    if (a.bio && a.bio.length > 20) completeness += 10;
-    if (a.current_position) completeness += 5;
-    if (a.location) completeness += 5;
+  // Enrich with metrics
+  const enrichedAlumni = alumniList.map(a => ({
+    ...a,
+    likesCount: likesCountMap[a.id] || 0,
+    viewsCount: viewsCountMap[a.id] || 0,
+    storyCount: storiesCountMap[a.id] || 0,
+  }));
 
-    // 2. Story availability (0 to 25)
-    const storyCount = storiesCountMap[a.id] || 0;
-    const storyScore = Math.min(storyCount * 10, 25);
+  // Deterministically shuffle daily so all visitors see the same daily rotation
+  const dailyRotated = dailyShuffle(enrichedAlumni);
 
-    // 3. Likes & Views balance (0 to 25)
-    const likesCount = likesCountMap[a.id] || 0;
-    const viewsCount = viewsCountMap[a.id] || 0;
-    const socialScore = Math.min((likesCount * 3) + (viewsCount * 0.5), 25);
-
-    // 4. Manual feature boost (15)
-    const featuredBoost = a.is_featured ? 15 : 0;
-
-    // 5. Randomness jitter (1 to 20) to ensure varied exposure
-    const randomJitter = Math.random() * 20;
-
-    // 6. Session seen penalty (-50) to give non-seen profiles a fair turn
-    const sessionPenalty = seenSessionSlugs.includes(a.slug) ? -50 : 0;
-
-    const totalWeight = Math.max(1, completeness + storyScore + socialScore + featuredBoost + randomJitter + sessionPenalty);
-
-    return {
-      ...a,
-      weight: totalWeight,
-      likesCount,
-      viewsCount,
-      storyCount,
-    };
-  });
-
-  // Sort by weighted score
-  scoredAlumni.sort((a, b) => b.weight - a.weight);
-
-  const selected = scoredAlumni.slice(0, limit);
-
-  // Record these selected slugs into session
-  recordSeenFeaturedSession(selected.map(s => s.slug));
-
-  return selected;
+  return dailyRotated.slice(0, limit);
 }
 
 /**
- * Fetch Alumni Preview for Section 5 of Homepage
+ * Fetch Alumni Preview for Section 5 of Homepage (with daily deterministic rotation)
  */
 export async function getAlumniPreview(limit = 8) {
+  let list = [];
   if (isSupabaseConfigured()) {
     try {
       const { data, error } = await supabase
         .from('public_alumni')
-        .select('id, full_name, slug, passing_year, current_position, profile_image_url')
-        .order('passing_year', { ascending: false })
-        .limit(limit);
+        .select('id, full_name, slug, passing_year, current_position, profile_image_url');
 
-      if (!error && data) return data;
+      if (!error && data) list = data;
     } catch (e) {
       console.warn('Supabase alumni preview failed:', e);
     }
   }
 
-  const alumni = mockDb.getAlumni().filter(a => a.is_active);
-  return alumni.slice(0, limit).map(a => ({
-    id: a.id,
-    full_name: a.full_name,
-    slug: a.slug,
-    passing_year: a.passing_year,
-    current_position: a.current_position,
-    profile_image_url: a.profile_image_url,
-  }));
+  if (list.length === 0) {
+    list = mockDb.getAlumni().filter(a => a.is_active).map(a => ({
+      id: a.id,
+      full_name: a.full_name,
+      slug: a.slug,
+      passing_year: a.passing_year,
+      current_position: a.current_position,
+      profile_image_url: a.profile_image_url,
+    }));
+  }
+
+  // Apply deterministic daily shuffle across visitors
+  const dailyRotated = dailyShuffle(list);
+  return dailyRotated.slice(0, limit);
 }
 
 /**

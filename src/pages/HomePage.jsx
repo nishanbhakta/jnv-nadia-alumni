@@ -2,7 +2,7 @@ import React from 'react';
 import Seo from '../components/common/Seo';
 import HeroBanner from '../components/home/HeroBanner';
 import RecentStories from '../components/home/RecentStories';
-import BatchStories from '../components/home/BatchStories';
+import RecentBatchStories from '../components/home/RecentBatchStories';
 import FeaturedAlumni from '../components/home/FeaturedAlumni';
 import AlumniPreview from '../components/home/AlumniPreview';
 import ShareStoryCta from '../components/home/ShareStoryCta';
@@ -22,13 +22,13 @@ export default function HomePage() {
       {/* SECTION 2: RECENT STORIES */}
       <RecentStories />
 
-      {/* SECTION 3: RECENT BATCH STORIES */}
-      <BatchStories />
+      {/* SECTION 3: STORIES FROM THE RECENT BATCH */}
+      <RecentBatchStories />
 
-      {/* SECTION 4: FEATURED ALUMNI */}
+      {/* SECTION 4: FEATURED ALUMNI (DYNAMIC DAILY ROTATION) */}
       <FeaturedAlumni />
 
-      {/* SECTION 5: ALUMNI DIRECTORY PREVIEW */}
+      {/* SECTION 5: ALUMNI DIRECTORY PREVIEW (DYNAMIC DAILY ROTATION) */}
       <AlumniPreview />
 
       {/* SECTION 6: SHARE YOUR STORY */}

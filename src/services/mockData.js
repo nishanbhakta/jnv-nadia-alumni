@@ -240,6 +240,22 @@ const INITIAL_STORIES = [
     content: 'People often think Navodaya is only about academics and sports, but the art room under Mr. Sen was a sanctuary. Today as a designer, those colors and stories still guide my aesthetic philosophy.',
     display_order: 1,
     created_at: '2024-02-12T11:00:00Z',
+  },
+  {
+    id: 's-11',
+    alumni_id: '88888888-8888-8888-8888-888888888888',
+    heading: 'Navigating New Horizons as the Class of 2020',
+    content: 'Passing out in 2020 right amidst global transitions taught our batch adaptability like nothing else. Navodaya prepared us for every curveball. Today as a frontend engineer in Hyderabad, the lessons of self-reliance, camaraderie, and evening prep discipline continue to guide my work every day.',
+    display_order: 1,
+    created_at: '2024-02-21T09:30:00Z',
+  },
+  {
+    id: 's-12',
+    alumni_id: '88888888-8888-8888-8888-888888888888',
+    heading: 'Hostel Evenings & Cultural Festivals',
+    content: 'From inter-house debate trophies to football tournaments on the campus field, our 2020 batch made lifelong memories under the evening sky of Nadia. Navodaya was truly a second home that shaped our character.',
+    display_order: 2,
+    created_at: '2024-02-22T14:15:00Z',
   }
 ];
 

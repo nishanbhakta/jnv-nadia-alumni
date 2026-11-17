@@ -54,7 +54,7 @@ export default function HeroBanner() {
   return (
     <div className="relative bg-white overflow-hidden">
       {/* Top Hero Container */}
-      <div className="relative min-h-[520px] lg:min-h-[580px] flex items-center">
+      <div className="relative min-h-[420px] lg:min-h-[460px] flex items-center">
         {/* Right Photographic Campus Backdrop with Smooth Fade and Maroon Wave */}
         <div className="absolute top-0 right-0 w-full lg:w-[60%] h-full pointer-events-none overflow-hidden flex justify-end">
           <img
@@ -69,7 +69,7 @@ export default function HeroBanner() {
         {/* Ambient decorative lighting */}
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-maroon-50/60 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-16 relative z-10 w-full">
           <div className="max-w-2xl">
             {/* Eyebrow Label */}
             <p className="text-xs sm:text-sm font-bold tracking-[0.22em] text-stone-500 uppercase mb-3">
@@ -82,12 +82,12 @@ export default function HeroBanner() {
             </h1>
 
             {/* Subheading / Description */}
-            <p className="text-base sm:text-lg text-charcoal-600 leading-relaxed max-w-lg mb-8 font-normal">
+            <p className="text-base sm:text-lg text-charcoal-600 leading-relaxed max-w-lg mb-7 font-normal">
               A community of Navaodiyans — staying connected, sharing stories, and supporting each other, always.
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 mb-10">
+            <div className="flex flex-wrap items-center gap-4">
               <Link
                 to={user ? "/profile/edit" : "/register"}
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm sm:text-base text-white bg-[#760A21] hover:bg-[#60081A] shadow-xs hover:shadow-md transition-all group"
@@ -108,43 +108,12 @@ export default function HeroBanner() {
                 <span>Read Alumni Stories</span>
               </a>
             </div>
-
-            {/* Stats Metrics Row */}
-            <div className="flex items-center gap-6 sm:gap-8 pt-2">
-              <div className="flex items-center gap-3">
-                <Users className="h-6 w-6 text-[#760A21] flex-shrink-0" />
-                <div>
-                  <p className="text-xl sm:text-2xl font-black text-gray-950 leading-tight">1,200+</p>
-                  <p className="text-xs text-charcoal-500 font-medium">Alumni</p>
-                </div>
-              </div>
-
-              <div className="h-8 w-px bg-stone-200" />
-
-              <div className="flex items-center gap-3">
-                <BookOpen className="h-6 w-6 text-[#760A21] flex-shrink-0" />
-                <div>
-                  <p className="text-xl sm:text-2xl font-black text-gray-950 leading-tight">200+</p>
-                  <p className="text-xs text-charcoal-500 font-medium">Stories</p>
-                </div>
-              </div>
-
-              <div className="h-8 w-px bg-stone-200" />
-
-              <div className="flex items-center gap-3">
-                <Calendar className="h-6 w-6 text-[#760A21] flex-shrink-0" />
-                <div>
-                  <p className="text-xl sm:text-2xl font-black text-gray-950 leading-tight">20+</p>
-                  <p className="text-xs text-charcoal-500 font-medium">Events</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
       {/* 4 Floating Quick-Access Cards Row */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16 relative z-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14 relative z-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {quickFeatures.map((item) => {
             const Icon = item.icon;

@@ -44,7 +44,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-stone-200/80 shadow-2xs transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18 sm:h-20 gap-3">
+        <div className="flex items-center justify-between min-h-[72px] sm:min-h-[82px] md:min-h-[90px] py-2 sm:py-2.5 gap-3">
           {/* Logo on Left: Crest + Banner */}
           <div className="flex-shrink-0">
             <Logo showBanner={true} />

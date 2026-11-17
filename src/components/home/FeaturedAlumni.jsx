@@ -26,31 +26,25 @@ export default function FeaturedAlumni() {
   return (
     <section className="py-14 sm:py-20 bg-[#FAF9F5] border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header with Shuffle Button */}
+        {/* Header with Daily Rotation Indicator */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12">
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-maroon-900 bg-maroon-50 border border-maroon-200/80 mb-3">
               <Sparkles className="h-3.5 w-3.5 text-gold-600" />
-              Dynamic Discovery
+              Daily Spotlight
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-charcoal-900 tracking-tight font-serif">
               Discover Our Alumni
             </h2>
             <p className="mt-2 text-sm sm:text-base text-charcoal-600 max-w-2xl leading-relaxed">
-              Diverse profiles across years, industries, and life paths. Our weighted discovery gives fair exposure to every journey.
+              Diverse profiles across years, industries, and life paths. Profiles rotate dynamically each day so every journey receives exposure.
             </p>
           </div>
 
-          <button
-            type="button"
-            onClick={loadFeatured}
-            disabled={loading}
-            className="mt-4 sm:mt-0 inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-charcoal-700 bg-white hover:bg-gold-50/50 border border-stone-200/90 shadow-2xs hover:border-gold-300 transition-all disabled:opacity-50"
-            title="Discover more alumni profiles"
-          >
-            <RefreshCw className={`h-3.5 w-3.5 text-gold-600 ${loading ? 'animate-spin' : ''}`} />
-            <span>Shuffle Spotlight</span>
-          </button>
+          <div className="mt-4 sm:mt-0 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold text-charcoal-600 bg-white border border-stone-200 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>Daily Shuffled Spotlight</span>
+          </div>
         </div>
 
         {/* Profiles Grid */}
