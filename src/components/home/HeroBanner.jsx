@@ -55,12 +55,12 @@ export default function HeroBanner() {
     <div className="relative bg-white overflow-hidden">
       {/* Top Hero Container */}
       <div className="relative min-h-[440px] lg:min-h-[480px] flex items-center">
-        {/* Right Photographic Campus Backdrop with Smooth Fade and Maroon Wave Ribbon */}
+        {/* Right Photographic Campus Backdrop with Smooth Fade */}
         <div className="absolute inset-y-0 right-0 w-full lg:w-[56%] xl:w-[58%] pointer-events-none overflow-hidden select-none">
           <img
             src="/background.jpg"
             alt="Jawahar Navodaya Vidyalaya Nadia Campus"
-            className="w-full h-full object-cover object-[center_32%] opacity-65 sm:opacity-80 lg:opacity-100 transition-opacity drop-shadow-xs select-none"
+            className="w-full h-full object-cover object-[center_32%] opacity-100 saturate-125 sm:opacity-80 sm:saturate-100 lg:opacity-100 transition-opacity drop-shadow-xs select-none"
           />
           {/* Desktop: Left subtle feathered gradient into clean white background */}
           <div className="hidden lg:block absolute inset-y-0 left-0 w-1/3 sm:w-1/2 lg:w-2/5 bg-gradient-to-r from-white via-white/80 via-30% to-transparent" />
@@ -71,32 +71,6 @@ export default function HeroBanner() {
           {/* Bottom subtle edge blend */}
           <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/30 to-transparent" />
 
-          {/* Layered Maroon Wave Ribbon (accentuating the campus photo base) */}
-          <div className="absolute -bottom-1 right-0 w-full sm:w-[90%] lg:w-[80%] xl:w-[70%] h-18 sm:h-22 lg:h-26 pointer-events-none overflow-hidden">
-            <svg
-              className="w-full h-full"
-              viewBox="0 0 1000 120"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M0,85 C260,25 440,110 690,55 C840,20 930,65 1000,50 L1000,120 L0,120 Z"
-                fill="#E2B4C2"
-                fillOpacity="0.4"
-              />
-              <path
-                d="M120,95 C330,40 510,115 750,70 C870,40 940,80 1000,65 L1000,120 L120,120 Z"
-                fill="#9C1735"
-                fillOpacity="0.5"
-              />
-              <path
-                d="M240,105 C430,60 590,120 810,85 C900,70 950,95 1000,85 L1000,120 L240,120 Z"
-                fill="#760A21"
-                fillOpacity="0.9"
-              />
-            </svg>
-          </div>
         </div>
 
         {/* Ambient decorative lighting */}
