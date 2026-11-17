@@ -29,6 +29,23 @@ export default function AboutPage() {
           </p>
         </div>
 
+        {/* School Campus Photo Card */}
+        <div className="overflow-hidden rounded-3xl border border-stone-200/90 shadow-card bg-white">
+          <img
+            src="/jnv-nadia-school.jpg"
+            alt="Jawahar Navodaya Vidyalaya Nadia Campus and Garden"
+            className="w-full h-64 sm:h-80 md:h-96 object-cover object-center"
+          />
+          <div className="p-4 sm:p-5 bg-ivory-surface/70 border-t border-stone-100 flex items-center justify-between text-xs text-charcoal-600">
+            <span className="font-bold text-charcoal-900 font-sans">
+              Jawahar Navodaya Vidyalaya, Nadia Campus
+            </span>
+            <span className="text-charcoal-500 font-medium font-sans">
+              West Bengal, India
+            </span>
+          </div>
+        </div>
+
         {/* Narrative Card */}
         <div className="bg-white rounded-3xl shadow-card border border-stone-200/90 p-8 sm:p-12 space-y-8 text-charcoal-700 font-serif leading-relaxed text-base sm:text-lg">
           <div>
