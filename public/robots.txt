@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /profile/edit
+Disallow: /settings
+
+Sitemap: https://jnvnadia-alumni.vercel.app/sitemap.xml

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none">
+  <!-- Outer circle badge -->
+  <circle cx="40" cy="40" r="37" fill="#FFFFFF" stroke="#0B2545" stroke-width="2.5"/>
+  <circle cx="40" cy="40" r="33" fill="#F8F9FA" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Subtle flag arc -->
+  <path d="M12 40 A 28 28 0 0 1 68 40" stroke="#FF9933" stroke-width="2.5" fill="none"/>
+  <path d="M12 40 A 28 28 0 0 0 68 40" stroke="#138808" stroke-width="2.5" fill="none"/>
+
+  <!-- Navodaya Torch & Rays -->
+  <path d="M40 20 L38 29 L42 29 Z" fill="#FF9933"/>
+  <circle cx="40" cy="18" r="3" fill="#FF9933"/>
+  
+  <!-- Open Book motif -->
+  <path d="M25 46 C29 42 34 42 40 45 C46 42 51 42 55 46 V50 C51 46 46 46 40 49 C34 46 29 46 25 50 Z" fill="#0B2545"/>
+  <line x1="40" y1="45" x2="40" y2="52" stroke="#FFFFFF" stroke-width="1.5"/>
+
+  <!-- Text -->
+  <text x="40" y="36" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" font-weight="800" fill="#0B2545" letter-spacing="1">JNV</text>
+  <text x="40" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="6.5" font-weight="700" fill="#138808" letter-spacing="0.5">NADIA</text>
+  <text x="40" y="67" text-anchor="middle" font-family="system-ui, sans-serif" font-size="4.5" font-weight="600" fill="#6B7280" letter-spacing="0.3">ALUMNI</text>
+</svg>
