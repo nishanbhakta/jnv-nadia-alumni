@@ -8,7 +8,7 @@ export default function AboutPage() {
   const developerSlug = import.meta.env.VITE_DEVELOPER_SLUG || 'nishan-bhakta';
 
   return (
-    <div className="py-14 sm:py-20 bg-[#F8F9FA] min-h-screen">
+    <div className="py-14 sm:py-20 bg-[#FBFBF9] min-h-screen">
       <Seo
         title="About JNV Nadia Alumni | Heritage & Culture"
         description="Learn about Jawahar Navodaya Vidyalaya, Nadia, its residential culture, the migration system, and the alumni portal mission."
@@ -17,22 +17,22 @@ export default function AboutPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Header */}
         <div className="text-center space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-saffron-700 bg-saffron-50 border border-saffron-200">
-            <GraduationCap className="h-3.5 w-3.5" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-maroon-900 bg-maroon-50/70 border border-maroon-200/80">
+            <GraduationCap className="h-3.5 w-3.5 text-maroon-700" />
             Our Roots & Heritage
           </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight">
+          <h1 className="text-3xl sm:text-5xl font-black text-charcoal-900 tracking-tight font-display">
             The Navodaya Legacy at Nadia
           </h1>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-charcoal-600 max-w-2xl mx-auto leading-relaxed">
             From the banks of the sacred rivers of Nadia district to academic and professional halls worldwide.
           </p>
         </div>
 
         {/* Narrative Card */}
-        <div className="bg-white rounded-3xl shadow-soft border border-gray-200 p-8 sm:p-12 space-y-8 text-gray-700 font-serif leading-relaxed text-base sm:text-lg">
+        <div className="bg-white rounded-3xl shadow-card border border-stone-200/90 p-8 sm:p-12 space-y-8 text-charcoal-700 font-serif leading-relaxed text-base sm:text-lg">
           <div>
-            <h2 className="text-2xl font-black font-sans text-gray-900 mb-4 tracking-tight">
+            <h2 className="text-2xl font-black font-sans text-charcoal-900 mb-4 tracking-tight">
               A Home Beyond Classrooms
             </h2>
             <p>
@@ -44,7 +44,7 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-black font-sans text-gray-900 mb-4 tracking-tight">
+            <h2 className="text-2xl font-black font-sans text-charcoal-900 mb-4 tracking-tight">
               The Four Houses & Daily Rhythms
             </h2>
             <p>
@@ -56,7 +56,7 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-black font-sans text-gray-900 mb-4 tracking-tight">
+            <h2 className="text-2xl font-black font-sans text-charcoal-900 mb-4 tracking-tight">
               National Integration & Migration
             </h2>
             <p>
@@ -67,7 +67,7 @@ export default function AboutPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-black font-sans text-gray-900 mb-4 tracking-tight">
+            <h2 className="text-2xl font-black font-sans text-charcoal-900 mb-4 tracking-tight">
               Purpose of This Alumni Community Portal
             </h2>
             <p>
@@ -80,19 +80,19 @@ export default function AboutPage() {
         </div>
 
         {/* Founding & Developer Tribute */}
-        <div className="bg-gradient-to-r from-saffron-50 via-white to-green-50 rounded-3xl border border-gray-200 p-8 sm:p-10 flex flex-col sm:flex-row items-center gap-6 shadow-soft">
-          <div className="w-16 h-16 rounded-2xl bg-navodaya-navy text-white flex items-center justify-center flex-shrink-0 font-bold text-xl shadow-md">
+        <div className="bg-gradient-to-r from-maroon-50/70 via-white to-ivory-surface rounded-3xl border border-stone-200/90 p-8 sm:p-10 flex flex-col sm:flex-row items-center gap-6 shadow-card">
+          <div className="w-16 h-16 rounded-2xl bg-maroon-800 text-white flex items-center justify-center flex-shrink-0 font-bold text-xl shadow-md border border-maroon-900/30">
             NB
           </div>
           <div className="text-center sm:text-left flex-1">
-            <h3 className="text-lg font-bold text-gray-900 font-sans">
+            <h3 className="text-lg font-bold text-charcoal-900 font-sans">
               Built with Heart for JNV Nadia
             </h3>
-            <p className="text-sm text-gray-600 mt-1 font-sans">
+            <p className="text-sm text-charcoal-600 mt-1 font-sans">
               Initiated, designed, and developed by{' '}
               <Link
                 to={`/alumni/${developerSlug}`}
-                className="font-bold text-navodaya-navy hover:text-saffron-600 underline decoration-saffron-400 decoration-2"
+                className="font-bold text-maroon-800 hover:text-maroon-950 underline decoration-gold-400 decoration-2"
               >
                 Nishan Bhakta
               </Link>{' '}
@@ -101,7 +101,7 @@ export default function AboutPage() {
           </div>
           <Link
             to="/register"
-            className="px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-navodaya-green hover:bg-navodaya-darkGreen shadow transition-all font-sans whitespace-nowrap"
+            className="px-6 py-3 rounded-full text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 shadow-xs hover:shadow transition-all font-sans whitespace-nowrap border border-maroon-900/30"
           >
             Join Our Portal
           </Link>

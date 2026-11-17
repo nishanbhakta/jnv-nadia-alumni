@@ -220,11 +220,11 @@ export default function AdminDashboardPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-t-xl text-xs sm:text-sm font-bold border-b-2 transition-all whitespace-nowrap ${
                   isActive
-                    ? 'border-saffron-500 text-saffron-600 bg-white shadow-sm'
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-100/50'
+                    ? 'border-maroon-800 text-maroon-900 bg-white shadow-2xs'
+                    : 'border-transparent text-charcoal-600 hover:text-charcoal-900 hover:bg-stone-100/50'
                 }`}
               >
-                <Icon className={`h-4 w-4 ${isActive ? 'text-saffron-500' : 'text-gray-400'}`} />
+                <Icon className={`h-4 w-4 ${isActive ? 'text-maroon-800' : 'text-charcoal-400'}`} />
                 <span>{tab.label}</span>
               </button>
             );

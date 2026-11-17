@@ -50,20 +50,20 @@ export default function LikeButton({ alumniId, initialCount = 0 }) {
         type="button"
         onClick={handleToggle}
         disabled={loading}
-        className={`inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-sm ${
+        className={`inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all shadow-2xs ${
           hasLiked
-            ? 'bg-rose-50 text-rose-600 border border-rose-200 hover:bg-rose-100'
-            : 'bg-white text-gray-700 border border-gray-300 hover:border-rose-300 hover:text-rose-600 hover:bg-rose-50/50'
+            ? 'bg-maroon-50 text-maroon-800 border border-maroon-300/80 hover:bg-maroon-100/70'
+            : 'bg-white text-charcoal-700 border border-stone-200 hover:border-maroon-300 hover:text-maroon-800 hover:bg-ivory-surface'
         }`}
         title={hasLiked ? 'Unlike this journey' : 'Appreciate this story'}
       >
         <Heart
-          className={`h-5 w-5 transition-transform ${
-            hasLiked ? 'text-rose-500 fill-rose-500 scale-110' : 'text-gray-400 group-hover:text-rose-500'
+          className={`h-4 sm:h-5 w-4 sm:w-5 transition-transform ${
+            hasLiked ? 'text-maroon-700 fill-maroon-700 scale-110' : 'text-charcoal-400 group-hover:text-maroon-600'
           }`}
         />
         <span>{hasLiked ? 'Appreciated' : 'Appreciate Story'}</span>
-        <span className="ml-1 px-2 py-0.5 rounded-full text-xs font-extrabold bg-gray-100 text-gray-800">
+        <span className="ml-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#FAF9F5] text-maroon-900 border border-stone-200">
           {likesCount}
         </span>
       </button>

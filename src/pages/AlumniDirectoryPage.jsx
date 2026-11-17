@@ -116,7 +116,7 @@ export default function AlumniDirectoryPage() {
   }
 
   return (
-    <div className="py-12 sm:py-16 bg-[#F8F9FA] min-h-screen">
+    <div className="py-10 sm:py-16 bg-[#FBFBF9] min-h-screen">
       <Seo
         title="Alumni Directory | JNV Nadia Alumni"
         description="Search and connect with former students of Jawahar Navodaya Vidyalaya, Nadia. Filter by batch year, search by name, and explore career journeys."
@@ -125,33 +125,33 @@ export default function AlumniDirectoryPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-saffron-700 bg-saffron-50 border border-saffron-200 mb-2">
-            <GraduationCap className="h-3.5 w-3.5" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-maroon-900 bg-maroon-50 border border-maroon-200/80 mb-2">
+            <GraduationCap className="h-3.5 w-3.5 text-maroon-700" />
             Navodaya Roll of Honor
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-black text-charcoal-900 tracking-tight font-serif">
             Alumni Directory
           </h1>
-          <p className="mt-2 text-sm sm:text-base text-gray-600">
+          <p className="mt-2 text-xs sm:text-sm text-charcoal-600">
             Searchable registry of registered former students. Currently displaying{' '}
-            <span className="font-bold text-gray-900">{directoryData.totalCount}</span> alumni.
+            <span className="font-bold text-maroon-900">{directoryData.totalCount}</span> alumni.
           </p>
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="bg-white rounded-2xl shadow-soft border border-gray-200 p-4 sm:p-6 mb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-white rounded-2xl shadow-soft border border-stone-200/90 p-4 sm:p-6 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
             {/* Search Input */}
             <div className="relative sm:col-span-2">
               <label htmlFor="search-input" className="sr-only">Search by full name</label>
-              <Search className="absolute left-3.5 top-3 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3.5 top-3 h-4 w-4 text-charcoal-400" />
               <input
                 id="search-input"
                 type="text"
                 placeholder="Search by full name or occupation..."
                 value={search}
                 onChange={handleSearchChange}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:border-transparent transition-all"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-ivory-surface text-xs sm:text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-500/30 focus:border-maroon-700 transition-all"
               />
             </div>
 
@@ -159,12 +159,12 @@ export default function AlumniDirectoryPage() {
             <div>
               <label htmlFor="batch-select" className="sr-only">Filter by batch</label>
               <div className="relative">
-                <Filter className="absolute left-3.5 top-3 h-4 w-4 text-gray-400" />
+                <Filter className="absolute left-3.5 top-3 h-4 w-4 text-charcoal-400" />
                 <select
                   id="batch-select"
                   value={batch}
                   onChange={handleBatchChange}
-                  className="w-full pl-10 pr-8 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:border-transparent transition-all"
+                  className="w-full pl-10 pr-8 py-2.5 rounded-xl border border-stone-200 text-xs sm:text-sm text-charcoal-900 bg-ivory-surface focus:outline-none focus:ring-2 focus:ring-maroon-500/30 focus:border-maroon-700 transition-all"
                 >
                   <option value="">All Batches</option>
                   {batchYears.map((y) => (
@@ -180,12 +180,12 @@ export default function AlumniDirectoryPage() {
             <div>
               <label htmlFor="sort-select" className="sr-only">Sort alumni</label>
               <div className="relative">
-                <ArrowUpDown className="absolute left-3.5 top-3 h-4 w-4 text-gray-400" />
+                <ArrowUpDown className="absolute left-3.5 top-3 h-4 w-4 text-charcoal-400" />
                 <select
                   id="sort-select"
                   value={sort}
                   onChange={handleSortChange}
-                  className="w-full pl-10 pr-8 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-saffron-500 focus:border-transparent transition-all"
+                  className="w-full pl-10 pr-8 py-2.5 rounded-xl border border-stone-200 text-xs sm:text-sm text-charcoal-900 bg-ivory-surface focus:outline-none focus:ring-2 focus:ring-maroon-500/30 focus:border-maroon-700 transition-all"
                 >
                   <option value="year_desc">Passing Year (Newest first)</option>
                   <option value="year_asc">Passing Year (Oldest first)</option>
@@ -198,16 +198,16 @@ export default function AlumniDirectoryPage() {
 
           {/* Active filter summary pill */}
           {(search || batch) && (
-            <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
-              <div className="flex items-center gap-2">
-                <span>Active filters:</span>
+            <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-charcoal-500">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[11px]">Active filters:</span>
                 {search && (
-                  <span className="px-2 py-0.5 rounded-full bg-saffron-100 text-saffron-800 font-medium">
+                  <span className="px-2 py-0.5 rounded-full bg-maroon-50 text-maroon-900 border border-maroon-200/80 text-[11px] font-semibold">
                     Name: "{search}"
                   </span>
                 )}
                 {batch && (
-                  <span className="px-2 py-0.5 rounded-full bg-green-100 text-green-800 font-medium">
+                  <span className="px-2 py-0.5 rounded-full bg-gold-50 text-gold-900 border border-gold-200 text-[11px] font-semibold">
                     Batch: {batch}
                   </span>
                 )}
@@ -215,7 +215,7 @@ export default function AlumniDirectoryPage() {
               <button
                 type="button"
                 onClick={clearFilters}
-                className="text-saffron-600 hover:text-saffron-800 font-semibold"
+                className="text-maroon-800 hover:text-maroon-950 font-bold text-xs"
               >
                 Reset filters
               </button>
@@ -224,23 +224,23 @@ export default function AlumniDirectoryPage() {
         </div>
 
         {/* Directory Table / Card Views */}
-        <div className="bg-white rounded-2xl shadow-soft border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-soft border border-stone-200/90 overflow-hidden">
           {loading ? (
-            <div className="p-12 text-center text-gray-500">
-              <RefreshCw className="h-8 w-8 animate-spin mx-auto text-saffron-500 mb-3" />
-              <p className="text-sm font-medium">Loading alumni records...</p>
+            <div className="p-12 text-center text-charcoal-500">
+              <RefreshCw className="h-8 w-8 animate-spin mx-auto text-maroon-700 mb-3" />
+              <p className="text-xs sm:text-sm font-medium">Loading alumni records...</p>
             </div>
           ) : directoryData.alumni.length === 0 ? (
             <div className="p-16 text-center">
-              <User className="h-12 w-12 text-gray-300 mx-auto mb-3" />
-              <h3 className="text-base font-bold text-gray-800">No alumni found</h3>
-              <p className="text-sm text-gray-500 mt-1 max-w-sm mx-auto">
+              <User className="h-12 w-12 text-charcoal-300 mx-auto mb-3" />
+              <h3 className="text-base font-bold text-charcoal-800 font-serif">No alumni found</h3>
+              <p className="text-xs sm:text-sm text-charcoal-500 mt-1 max-w-sm mx-auto">
                 No alumni match your current search or batch criteria. Try adjusting the filter or search term.
               </p>
               <button
                 type="button"
                 onClick={clearFilters}
-                className="mt-4 px-4 py-2 rounded-lg text-xs font-semibold text-saffron-700 bg-saffron-50 border border-saffron-200 hover:bg-saffron-100 transition-colors"
+                className="mt-4 px-4 py-2 rounded-xl text-xs font-bold text-maroon-900 bg-maroon-50 border border-maroon-200/80 hover:bg-maroon-100 transition-colors"
               >
                 Clear all filters
               </button>
@@ -251,23 +251,23 @@ export default function AlumniDirectoryPage() {
               <div className="hidden md:block overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="border-b border-gray-200 bg-gray-50/70 text-xs font-bold text-gray-600 uppercase tracking-wider">
-                      <th scope="col" className="py-4 px-6">Profile</th>
-                      <th scope="col" className="py-4 px-6">Full Name</th>
-                      <th scope="col" className="py-4 px-6">Passing Year</th>
-                      <th scope="col" className="py-4 px-6">Current Position</th>
-                      <th scope="col" className="py-4 px-6 text-right">Action</th>
+                    <tr className="border-b border-stone-200 bg-[#FAF9F5] text-[11px] font-bold text-charcoal-600 uppercase tracking-wider">
+                      <th scope="col" className="py-3.5 px-6">Profile</th>
+                      <th scope="col" className="py-3.5 px-6">Full Name</th>
+                      <th scope="col" className="py-3.5 px-6">Passing Year</th>
+                      <th scope="col" className="py-3.5 px-6">Current Position</th>
+                      <th scope="col" className="py-3.5 px-6 text-right">Action</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100 text-sm">
+                  <tbody className="divide-y divide-stone-100 text-xs sm:text-sm">
                     {directoryData.alumni.map((alumnus) => (
-                      <tr key={alumnus.id} className="hover:bg-gray-50/75 transition-colors group">
+                      <tr key={alumnus.id} className="hover:bg-ivory-surface/80 transition-colors group">
                         {/* 1. Profile Picture */}
                         <td className="py-4 px-6">
                           <img
                             src={alumnus.profile_image_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150'}
                             alt={alumnus.full_name}
-                            className="w-12 h-12 rounded-full object-cover border border-gray-200 shadow-sm"
+                            className="w-11 h-11 rounded-full object-cover border border-stone-200 ring-1 ring-gold-400/30 shadow-2xs"
                             loading="lazy"
                           />
                         </td>
@@ -276,12 +276,12 @@ export default function AlumniDirectoryPage() {
                         <td className="py-4 px-6">
                           <Link
                             to={`/alumni/${alumnus.slug}`}
-                            className="font-bold text-gray-900 group-hover:text-navodaya-navy transition-colors block text-base"
+                            className="font-bold text-charcoal-900 group-hover:text-maroon-800 transition-colors block text-sm font-serif"
                           >
                             {alumnus.full_name}
                           </Link>
                           {alumnus.location && (
-                            <span className="text-xs text-gray-500 block mt-0.5">
+                            <span className="text-[11px] text-charcoal-500 block mt-0.5">
                               {alumnus.location}
                             </span>
                           )}
@@ -289,18 +289,18 @@ export default function AlumniDirectoryPage() {
 
                         {/* 3. Passing-out Year */}
                         <td className="py-4 px-6">
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold bg-saffron-50 text-saffron-800 border border-saffron-200">
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-bold bg-maroon-50 text-maroon-900 border border-maroon-200/70">
                             Batch of {alumnus.passing_year}
                           </span>
                         </td>
 
                         {/* 4. Current Position */}
                         <td className="py-4 px-6">
-                          <span className="font-medium text-gray-800 block">
+                          <span className="font-semibold text-charcoal-800 block text-xs">
                             {alumnus.current_position || 'Navodaya Alumnus'}
                           </span>
                           {alumnus.company_or_institution && (
-                            <span className="text-xs text-gray-500 block mt-0.5">
+                            <span className="text-[11px] text-charcoal-500 block mt-0.5">
                               {alumnus.company_or_institution}
                             </span>
                           )}
@@ -310,10 +310,10 @@ export default function AlumniDirectoryPage() {
                         <td className="py-4 px-6 text-right">
                           <Link
                             to={`/alumni/${alumnus.slug}`}
-                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-navodaya-green bg-green-50 hover:bg-navodaya-green hover:text-white border border-green-200 transition-all shadow-sm"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-maroon-800 bg-maroon-50 hover:bg-maroon-800 hover:text-white border border-maroon-200 transition-all shadow-2xs"
                           >
                             <span>View Profile</span>
-                            <ExternalLink className="h-3 w-3" />
+                            <ExternalLink className="h-3 w-3 text-gold-600 group-hover:text-white" />
                           </Link>
                         </td>
                       </tr>
@@ -323,42 +323,42 @@ export default function AlumniDirectoryPage() {
               </div>
 
               {/* Mobile Responsive Cards Layout */}
-              <div className="md:hidden divide-y divide-gray-100">
+              <div className="md:hidden divide-y divide-stone-100">
                 {directoryData.alumni.map((alumnus) => (
                   <div key={alumnus.id} className="p-4 space-y-3">
                     <div className="flex items-center gap-3">
                       <img
                         src={alumnus.profile_image_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150'}
                         alt={alumnus.full_name}
-                        className="w-14 h-14 rounded-full object-cover border border-gray-200 flex-shrink-0"
+                        className="w-13 h-13 rounded-full object-cover border border-stone-200 flex-shrink-0 ring-1 ring-gold-400/30"
                         loading="lazy"
                       />
                       <div className="min-w-0 flex-1">
                         <Link
                           to={`/alumni/${alumnus.slug}`}
-                          className="font-bold text-gray-900 text-base block truncate"
+                          className="font-bold text-charcoal-900 text-sm block truncate font-serif"
                         >
                           {alumnus.full_name}
                         </Link>
-                        <span className="inline-block px-2 py-0.5 rounded text-[11px] font-bold bg-saffron-50 text-saffron-800 border border-saffron-200 mt-1">
+                        <span className="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-maroon-50 text-maroon-900 border border-maroon-200/80 mt-1">
                           Batch of {alumnus.passing_year}
                         </span>
                       </div>
                     </div>
 
-                    <div className="text-xs text-gray-600 bg-gray-50 p-2.5 rounded-lg space-y-1">
-                      <div className="flex items-center gap-1.5 font-medium text-gray-800">
-                        <Briefcase className="h-3.5 w-3.5 text-gray-400" />
+                    <div className="text-xs text-charcoal-600 bg-ivory-surface p-2.5 rounded-xl space-y-1 border border-stone-100">
+                      <div className="flex items-center gap-1.5 font-semibold text-charcoal-800">
+                        <Briefcase className="h-3.5 w-3.5 text-gold-600" />
                         <span className="truncate">{alumnus.current_position || 'Navodaya Alumnus'}</span>
                       </div>
                       {alumnus.company_or_institution && (
-                        <p className="text-gray-500 pl-5 truncate">{alumnus.company_or_institution}</p>
+                        <p className="text-charcoal-500 pl-5 truncate text-[11px]">{alumnus.company_or_institution}</p>
                       )}
                     </div>
 
                     <Link
                       to={`/alumni/${alumnus.slug}`}
-                      className="block w-full py-2 px-3 text-center text-xs font-bold rounded-lg text-white bg-navodaya-navy hover:bg-slate-900 transition-colors"
+                      className="block w-full py-2 px-3 text-center text-xs font-bold rounded-xl text-white bg-maroon-800 hover:bg-maroon-900 transition-colors shadow-2xs"
                     >
                       View Profile & Story
                     </Link>
@@ -368,10 +368,10 @@ export default function AlumniDirectoryPage() {
 
               {/* Pagination Controls */}
               {directoryData.totalPages > 1 && (
-                <div className="p-4 sm:px-6 border-t border-gray-200 bg-gray-50/50 flex items-center justify-between">
-                  <p className="text-xs text-gray-500">
-                    Showing Page <span className="font-bold text-gray-800">{directoryData.page}</span> of{' '}
-                    <span className="font-bold text-gray-800">{directoryData.totalPages}</span>
+                <div className="p-4 sm:px-6 border-t border-stone-200 bg-[#FAF9F5] flex items-center justify-between">
+                  <p className="text-xs text-charcoal-500">
+                    Showing Page <span className="font-bold text-charcoal-800">{directoryData.page}</span> of{' '}
+                    <span className="font-bold text-charcoal-800">{directoryData.totalPages}</span>
                   </p>
 
                   <div className="flex items-center space-x-2">
@@ -379,19 +379,19 @@ export default function AlumniDirectoryPage() {
                       type="button"
                       onClick={() => handlePageChange(page - 1)}
                       disabled={page <= 1}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-gray-300 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-40 transition-colors"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-stone-300 text-xs font-semibold text-charcoal-700 bg-white hover:bg-ivory-surface disabled:opacity-40 transition-colors"
                     >
-                      <ChevronLeft className="h-4 w-4" />
+                      <ChevronLeft className="h-3.5 w-3.5" />
                       Prev
                     </button>
                     <button
                       type="button"
                       onClick={() => handlePageChange(page + 1)}
                       disabled={page >= directoryData.totalPages}
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-gray-300 text-xs font-semibold text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-40 transition-colors"
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg border border-stone-300 text-xs font-semibold text-charcoal-700 bg-white hover:bg-ivory-surface disabled:opacity-40 transition-colors"
                     >
                       Next
-                      <ChevronRight className="h-4 w-4" />
+                      <ChevronRight className="h-3.5 w-3.5" />
                     </button>
                   </div>
                 </div>

@@ -54,8 +54,8 @@ export default function AlumniProfilePage() {
   if (loading) {
     return (
       <div className="py-24 text-center">
-        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-saffron-500 border-r-transparent mb-4" />
-        <p className="text-gray-500 text-sm">Loading alumnus profile & stories...</p>
+        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-maroon-700 border-r-transparent mb-4" />
+        <p className="text-charcoal-500 text-xs sm:text-sm">Loading alumnus profile & stories...</p>
       </div>
     );
   }
@@ -63,14 +63,14 @@ export default function AlumniProfilePage() {
   if (error || !alumnus) {
     return (
       <div className="max-w-xl mx-auto py-20 px-4 text-center">
-        <AlertCircle className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Alumnus Profile Not Found</h2>
-        <p className="text-gray-600 mb-6">
+        <AlertCircle className="h-12 w-12 text-charcoal-400 mx-auto mb-4" />
+        <h2 className="text-2xl font-bold text-charcoal-900 mb-2 font-serif">Alumnus Profile Not Found</h2>
+        <p className="text-charcoal-600 mb-6 text-sm">
           The requested profile ({slug}) does not exist or may have been unlisted.
         </p>
         <Link
           to="/alumni"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-navodaya-navy hover:bg-slate-900 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-maroon-800 hover:bg-maroon-900 transition-colors shadow-xs"
         >
           <ArrowLeft className="h-4 w-4" />
           <span>Return to Alumni Directory</span>
@@ -85,11 +85,11 @@ export default function AlumniProfilePage() {
   );
 
   return (
-    <div className="py-10 sm:py-14 bg-[#F8F9FA] min-h-screen">
+    <div className="py-10 sm:py-14 bg-[#FBFBF9] min-h-screen">
       <Seo
         title={`${alumnus.full_name} (Batch ${alumnus.passing_year}) | JNV Nadia Alumni`}
         description={alumnus.bio || `Read ${alumnus.full_name}'s journey and school memories from JNV Nadia.`}
-        image={alumnus.profile_image_url || '/logo.svg'}
+        image={alumnus.profile_image_url || '/nvs-logo.png'}
       />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -97,7 +97,7 @@ export default function AlumniProfilePage() {
         <div className="mb-6">
           <Link
             to="/alumni"
-            className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-saffron-600 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-bold text-charcoal-500 hover:text-maroon-800 transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
             <span>Back to All Alumni</span>
@@ -108,30 +108,30 @@ export default function AlumniProfilePage() {
         <ProfileHeader alumnus={alumnus} isOwner={isOwner} />
 
         {/* Story Journey Sections */}
-        <div className="space-y-8">
-          <div className="flex items-center justify-between pb-2 border-b border-gray-200">
+        <div className="space-y-6 sm:space-y-8">
+          <div className="flex items-center justify-between pb-2 border-b border-stone-200">
             <div className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5 text-saffron-600" />
-              <h2 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
+              <BookOpen className="h-5 w-5 text-maroon-800" />
+              <h2 className="text-xl sm:text-2xl font-black text-charcoal-900 tracking-tight font-serif">
                 Personal Journey & School Memories
               </h2>
             </div>
-            <span className="text-xs text-gray-400">
+            <span className="text-xs text-charcoal-400 font-medium">
               {alumnus.story_sections?.length || 0} {(alumnus.story_sections?.length || 0) === 1 ? 'Chapter' : 'Chapters'}
             </span>
           </div>
 
           {(!alumnus.story_sections || alumnus.story_sections.length === 0) ? (
-            <div className="bg-white rounded-3xl p-10 text-center border border-gray-200">
-              <Sparkles className="h-10 w-10 text-saffron-400 mx-auto mb-3" />
-              <h3 className="text-base font-bold text-gray-800">Stories coming soon</h3>
-              <p className="text-sm text-gray-500 mt-1 max-w-md mx-auto">
+            <div className="bg-white rounded-3xl p-10 text-center border border-stone-200/90 shadow-soft">
+              <Sparkles className="h-10 w-10 text-gold-500 mx-auto mb-3" />
+              <h3 className="text-base font-bold text-charcoal-800 font-serif">Stories coming soon</h3>
+              <p className="text-xs sm:text-sm text-charcoal-500 mt-1 max-w-md mx-auto">
                 {alumnus.full_name} has not added their story chapters yet.
               </p>
               {isOwner && (
                 <Link
                   to="/profile/edit"
-                  className="mt-4 inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold text-white bg-navodaya-green hover:bg-navodaya-darkGreen transition-colors"
+                  className="mt-4 inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 transition-colors shadow-xs"
                 >
                   Add Your Story Chapters
                 </Link>
@@ -141,23 +141,23 @@ export default function AlumniProfilePage() {
             alumnus.story_sections.map((section, index) => (
               <section
                 key={section.id || index}
-                className="bg-white rounded-3xl shadow-soft border border-gray-100 p-6 sm:p-10 transition-all relative overflow-hidden"
+                className="bg-white rounded-3xl shadow-soft border border-stone-200/90 p-6 sm:p-10 transition-all relative overflow-hidden"
               >
                 {/* Section Index Marker */}
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-saffron-700 mb-3">
-                  <span className="w-5 h-5 rounded-full bg-saffron-50 text-saffron-700 border border-saffron-200 flex items-center justify-center font-black text-[10px]">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-maroon-900 mb-3">
+                  <span className="w-5 h-5 rounded-full bg-maroon-50 text-maroon-900 border border-maroon-200/70 flex items-center justify-center font-black text-[10px]">
                     {index + 1}
                   </span>
                   <span>Chapter {index + 1}</span>
                 </div>
 
                 {/* Section Heading */}
-                <h3 className="text-xl sm:text-2xl font-extrabold text-gray-900 mb-5 tracking-tight">
+                <h3 className="text-lg sm:text-2xl font-black text-charcoal-900 mb-4 tracking-tight font-serif">
                   {section.heading}
                 </h3>
 
                 {/* Section Content with Editorial Reading Typography */}
-                <div className="prose prose-stone max-w-none text-gray-700 font-serif leading-relaxed text-base sm:text-lg whitespace-pre-line">
+                <div className="prose prose-stone max-w-none text-charcoal-700 font-serif leading-relaxed text-sm sm:text-base whitespace-pre-line">
                   {section.content}
                 </div>
               </section>
@@ -166,16 +166,16 @@ export default function AlumniProfilePage() {
         </div>
 
         {/* Social Interaction Bar: Likes & Views */}
-        <div className="mt-10 bg-white rounded-2xl border border-gray-200 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-soft">
+        <div className="mt-8 sm:mt-10 bg-white rounded-2xl border border-stone-200/90 p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-soft">
           <LikeButton alumniId={alumnus.id} initialCount={alumnus.likesCount || 0} />
 
-          <div className="flex items-center gap-6 text-xs text-gray-500">
+          <div className="flex items-center gap-6 text-xs text-charcoal-500">
             <span className="flex items-center gap-1.5" title="Verified Profile Views">
-              <Eye className="h-4 w-4 text-gray-400" />
+              <Eye className="h-4 w-4 text-gold-600" />
               <span>{alumnus.viewsCount || 0} unique views</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <Clock className="h-4 w-4 text-gray-400" />
+              <Clock className="h-4 w-4 text-charcoal-400" />
               <span>Member since {new Date(alumnus.created_at).getFullYear()}</span>
             </span>
           </div>

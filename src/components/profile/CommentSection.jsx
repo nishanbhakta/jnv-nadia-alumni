@@ -46,20 +46,20 @@ export default function CommentSection({ alumniId, initialComments = [] }) {
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-soft border border-gray-200 p-6 sm:p-10 mt-10">
-      <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-100">
+    <div className="bg-white rounded-3xl shadow-soft border border-stone-200/90 p-6 sm:p-10 mt-8 sm:mt-10">
+      <div className="flex items-center justify-between mb-8 pb-4 border-b border-stone-100">
         <div className="flex items-center gap-2.5">
-          <MessageSquare className="h-5 w-5 text-navodaya-navy" />
-          <h2 className="text-xl sm:text-2xl font-extrabold text-gray-900">
+          <MessageSquare className="h-5 w-5 text-maroon-800" />
+          <h2 className="text-xl sm:text-2xl font-black text-charcoal-900 font-serif">
             Thoughts & Messages ({comments.length})
           </h2>
         </div>
-        <span className="text-xs text-gray-400">Open to all Navodayans & visitors</span>
+        <span className="text-xs text-charcoal-400">Open to all Navodayans & visitors</span>
       </div>
 
       {/* Submission Form */}
-      <form onSubmit={handleCommentSubmit} className="mb-10 bg-gray-50/80 rounded-2xl p-4 sm:p-6 border border-gray-200">
-        <h3 className="text-sm font-bold text-gray-900 mb-4">
+      <form onSubmit={handleCommentSubmit} className="mb-10 bg-[#FAF9F5] rounded-2xl p-4 sm:p-6 border border-stone-200/80">
+        <h3 className="text-xs sm:text-sm font-bold text-charcoal-900 mb-4 font-serif">
           Leave a message or hostel memory
         </h3>
 
@@ -87,9 +87,9 @@ export default function CommentSection({ alumniId, initialComments = [] }) {
           autoComplete="off"
         />
 
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           <div>
-            <label htmlFor="visitor-name" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+            <label htmlFor="visitor-name" className="block text-[11px] font-bold text-charcoal-700 uppercase tracking-wider mb-1">
               Your Name / Batch
             </label>
             <input
@@ -99,12 +99,12 @@ export default function CommentSection({ alumniId, initialComments = [] }) {
               placeholder="e.g. Priyabrata Roy (Batch 2017)"
               value={visitorName}
               onChange={(e) => setVisitorName(e.target.value)}
-              className="w-full px-3.5 py-2 rounded-xl border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs sm:text-sm text-charcoal-900 bg-white focus:outline-none focus:ring-2 focus:ring-maroon-500/30 focus:border-maroon-700 transition-all"
             />
           </div>
 
           <div>
-            <label htmlFor="comment-text" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+            <label htmlFor="comment-text" className="block text-[11px] font-bold text-charcoal-700 uppercase tracking-wider mb-1">
               Your Message
             </label>
             <textarea
@@ -116,20 +116,20 @@ export default function CommentSection({ alumniId, initialComments = [] }) {
               placeholder="Write a message, reminiscence of school days, or words of encouragement..."
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-xs sm:text-sm text-charcoal-900 bg-white focus:outline-none focus:ring-2 focus:ring-maroon-500/30 focus:border-maroon-700 transition-all font-sans"
             />
           </div>
 
           <div className="flex items-center justify-between pt-1">
-            <span className="text-[11px] text-gray-400">
+            <span className="text-[11px] text-charcoal-400">
               {commentText.length}/1000 characters
             </span>
             <button
               type="submit"
               disabled={submitting}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-xl text-xs font-bold text-white bg-navodaya-green hover:bg-navodaya-darkGreen focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-navodaya-green shadow-sm transition-all disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-maroon-700 border border-maroon-950/30 shadow-xs transition-all disabled:opacity-50"
             >
-              <Send className="h-3.5 w-3.5" />
+              <Send className="h-3.5 w-3.5 text-gold-300" />
               <span>{submitting ? 'Posting...' : 'Post Message'}</span>
             </button>
           </div>
@@ -137,29 +137,29 @@ export default function CommentSection({ alumniId, initialComments = [] }) {
       </form>
 
       {/* Existing Comments List */}
-      <div className="space-y-4">
+      <div className="space-y-3.5">
         {comments.length === 0 ? (
-          <div className="text-center py-8 text-gray-400 text-sm">
-            <MessageSquare className="h-8 w-8 mx-auto mb-2 text-gray-300" />
+          <div className="text-center py-8 text-charcoal-400 text-xs sm:text-sm">
+            <MessageSquare className="h-8 w-8 mx-auto mb-2 text-charcoal-300" />
             <p>No messages yet. Be the first to leave a warm greeting!</p>
           </div>
         ) : (
           comments.map((comment) => (
             <div
               key={comment.id}
-              className="p-4 sm:p-5 rounded-2xl bg-white border border-gray-100 shadow-soft space-y-2 transition-all"
+              className="p-4 sm:p-5 rounded-2xl bg-white border border-stone-200/90 shadow-2xs space-y-2 transition-all hover:border-stone-300"
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-saffron-100 text-saffron-800 flex items-center justify-center font-bold text-xs">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-7 h-7 rounded-full bg-maroon-50 text-maroon-900 border border-maroon-200/70 flex items-center justify-center font-bold text-xs">
                     {comment.visitor_name.charAt(0).toUpperCase()}
                   </div>
-                  <span className="font-bold text-sm text-gray-900">
+                  <span className="font-bold text-xs sm:text-sm text-charcoal-900">
                     {comment.visitor_name}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1 text-[11px] text-gray-400">
+                <div className="flex items-center gap-1 text-[11px] text-charcoal-400">
                   <Clock className="h-3 w-3" />
                   <span>
                     {new Date(comment.created_at).toLocaleDateString('en-IN', {
@@ -171,7 +171,7 @@ export default function CommentSection({ alumniId, initialComments = [] }) {
                 </div>
               </div>
 
-              <p className="text-sm text-gray-700 leading-relaxed pl-9 whitespace-pre-line">
+              <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed pl-9 whitespace-pre-line">
                 {comment.comment_text}
               </p>
             </div>

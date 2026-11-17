@@ -193,14 +193,14 @@ export default function ProfileEditPage() {
   if (authLoading || (!profile && loadingStories)) {
     return (
       <div className="py-24 text-center">
-        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-saffron-500 border-r-transparent mb-4" />
-        <p className="text-gray-500 text-sm">Loading your profile workspace...</p>
+        <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-maroon-800 border-r-transparent mb-4" />
+        <p className="text-charcoal-500 text-sm">Loading your profile workspace...</p>
       </div>
     );
   }
 
   return (
-    <div className="py-12 sm:py-16 bg-[#F8F9FA] min-h-screen">
+    <div className="py-12 sm:py-16 bg-[#FBFBF9] min-h-screen">
       <Seo
         title="Edit Stories & Profile | JNV Nadia Alumni"
         description="Craft your personal story chapters, memories of school days, and career updates."
@@ -209,12 +209,12 @@ export default function ProfileEditPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Welcome message for new signups */}
         {isWelcome && (
-          <div className="mb-8 p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 shadow-soft">
+          <div className="mb-8 p-6 rounded-2xl bg-emerald-50/80 border border-emerald-200/90 text-emerald-950 shadow-soft">
             <h2 className="text-lg font-bold flex items-center gap-2 mb-1">
-              <CheckCircle2 className="h-5 w-5 text-emerald-600" />
+              <CheckCircle2 className="h-5 w-5 text-emerald-700" />
               Welcome to the JNV Nadia Alumni Family!
             </h2>
-            <p className="text-sm text-emerald-800">
+            <p className="text-sm text-emerald-900 leading-relaxed">
               Your profile is registered! Take a moment now to add your favorite school memories and life milestones below.
             </p>
           </div>
@@ -223,10 +223,14 @@ export default function ProfileEditPage() {
         {/* Top Header & Public Link */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-maroon-900 bg-maroon-50/70 border border-maroon-200/70 mb-2">
+              <BookOpen className="h-3.5 w-3.5 text-gold-500" />
+              Alumni Story Studio
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-display font-black text-charcoal-900 tracking-tight">
               Edit Your Profile & Stories
             </h1>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-charcoal-500 mt-1">
               Craft your story chapters in your own words. Add, edit, or rearrange anytime.
             </p>
           </div>
@@ -234,9 +238,9 @@ export default function ProfileEditPage() {
           {profile?.slug && (
             <Link
               to={`/alumni/${profile.slug}`}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-navodaya-navy bg-white hover:bg-gray-50 border border-gray-300 shadow-sm transition-all self-start sm:self-auto"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-charcoal-800 bg-white hover:bg-ivory-surface border border-stone-200 shadow-2xs hover:shadow-xs transition-all self-start sm:self-auto"
             >
-              <Eye className="h-4 w-4 text-navodaya-green" />
+              <Eye className="h-4 w-4 text-maroon-700" />
               <span>View Your Live Page</span>
             </Link>
           )}
@@ -244,14 +248,14 @@ export default function ProfileEditPage() {
 
         {/* Status Alerts */}
         {status.type === 'success' && (
-          <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center gap-3">
-            <CheckCircle2 className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+          <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-sm flex items-center gap-3 shadow-2xs">
+            <CheckCircle2 className="h-5 w-5 text-emerald-700 flex-shrink-0" />
             <span>{status.message}</span>
           </div>
         )}
 
         {status.type === 'error' && (
-          <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-sm flex items-center gap-3">
+          <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-900 text-sm flex items-center gap-3 shadow-2xs">
             <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
             <span>{status.message}</span>
           </div>
@@ -259,27 +263,27 @@ export default function ProfileEditPage() {
 
         <form onSubmit={handleSaveAll} className="space-y-8">
           {/* 1. Personal Details Card */}
-          <div className="bg-white rounded-3xl shadow-soft border border-gray-200 p-6 sm:p-8">
-            <div className="flex items-center gap-2.5 pb-4 border-b border-gray-100 mb-6">
-              <User className="h-5 w-5 text-saffron-600" />
-              <h2 className="text-lg font-bold text-gray-900">
+          <div className="bg-white rounded-3xl shadow-card border border-stone-200/90 p-6 sm:p-8">
+            <div className="flex items-center gap-2.5 pb-4 border-b border-stone-100 mb-6">
+              <User className="h-5 w-5 text-maroon-800" />
+              <h2 className="text-lg font-bold text-charcoal-900 font-display">
                 Personal & Professional Details
               </h2>
             </div>
 
             {/* Photo Avatar Row */}
-            <div className="flex items-center gap-5 mb-6 p-4 rounded-2xl bg-gray-50 border border-gray-200">
+            <div className="flex items-center gap-5 mb-6 p-4 rounded-2xl bg-ivory-surface border border-stone-200/80">
               <img
                 src={personalInfo.profile_image_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200'}
                 alt="Avatar"
-                className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-sm"
+                className="w-16 h-16 rounded-full object-cover border-2 border-white shadow-soft ring-1 ring-gold-400/40"
               />
               <div>
                 <label
                   htmlFor="change-photo"
-                  className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-700 bg-white hover:bg-gray-100 border border-gray-300 shadow-sm transition-all"
+                  className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold text-charcoal-700 bg-white hover:bg-stone-50 border border-stone-200 shadow-2xs transition-all"
                 >
-                  <Upload className="h-3.5 w-3.5 text-gray-500" />
+                  <Upload className="h-3.5 w-3.5 text-charcoal-500" />
                   <span>{uploadingPhoto ? 'Uploading...' : 'Change Photo'}</span>
                   <input
                     id="change-photo"
@@ -290,7 +294,7 @@ export default function ProfileEditPage() {
                     className="hidden"
                   />
                 </label>
-                <p className="text-[11px] text-gray-400 mt-1">
+                <p className="text-[11px] text-charcoal-400 mt-1">
                   Square photograph recommended (JPG, PNG, WebP).
                 </p>
               </div>
@@ -298,7 +302,7 @@ export default function ProfileEditPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Full Name
                 </label>
                 <input
@@ -306,12 +310,12 @@ export default function ProfileEditPage() {
                   required
                   value={personalInfo.full_name}
                   onChange={(e) => setPersonalInfo({ ...personalInfo, full_name: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Current Position / Role
                 </label>
                 <input
@@ -319,12 +323,12 @@ export default function ProfileEditPage() {
                   placeholder="e.g. Lead Software Engineer"
                   value={personalInfo.current_position}
                   onChange={(e) => setPersonalInfo({ ...personalInfo, current_position: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Organization / Company
                 </label>
                 <input
@@ -332,12 +336,12 @@ export default function ProfileEditPage() {
                   placeholder="e.g. Tech Innovation Labs"
                   value={personalInfo.company_or_institution}
                   onChange={(e) => setPersonalInfo({ ...personalInfo, company_or_institution: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Current City / Country
                 </label>
                 <input
@@ -345,12 +349,12 @@ export default function ProfileEditPage() {
                   placeholder="e.g. Bengaluru, India"
                   value={personalInfo.location}
                   onChange={(e) => setPersonalInfo({ ...personalInfo, location: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Contact Number
                 </label>
                 <input
@@ -358,24 +362,24 @@ export default function ProfileEditPage() {
                   placeholder="+91 98765 43210"
                   value={personalInfo.contact_number}
                   onChange={(e) => setPersonalInfo({ ...personalInfo, contact_number: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Class XII Passing Batch
                 </label>
                 <input
                   type="text"
                   disabled
                   value={`Batch of ${profile?.passing_year || ''}`}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 bg-gray-100 text-sm text-gray-500 cursor-not-allowed"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 bg-stone-100/70 text-sm text-charcoal-500 cursor-not-allowed font-medium"
                 />
               </div>
 
               <div className="sm:col-span-2">
-                <label className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Short Bio / Introduction
                 </label>
                 <textarea
@@ -383,22 +387,22 @@ export default function ProfileEditPage() {
                   maxLength={400}
                   value={personalInfo.bio}
                   onChange={(e) => setPersonalInfo({ ...personalInfo, bio: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
             </div>
           </div>
 
           {/* 2. Flexible Story Chapters Editor */}
-          <div className="bg-white rounded-3xl shadow-soft border border-gray-200 p-6 sm:p-8">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-gray-100 mb-6 gap-2">
+          <div className="bg-white rounded-3xl shadow-card border border-stone-200/90 p-6 sm:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-stone-100 mb-6 gap-2">
               <div className="flex items-center gap-2.5">
-                <BookOpen className="h-5 w-5 text-navodaya-green" />
+                <BookOpen className="h-5 w-5 text-maroon-800" />
                 <div>
-                  <h2 className="text-lg font-bold text-gray-900">
+                  <h2 className="text-lg font-bold text-charcoal-900 font-display">
                     Your Story Sections & Chapters
                   </h2>
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-charcoal-500">
                     Add unlimited custom sections. Rearrange with the up/down arrows.
                   </p>
                 </div>
@@ -407,24 +411,24 @@ export default function ProfileEditPage() {
               <button
                 type="button"
                 onClick={handleAddSection}
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-navodaya-green hover:bg-navodaya-darkGreen transition-colors shadow-sm self-start sm:self-auto"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 transition-colors shadow-2xs self-start sm:self-auto border border-maroon-900/30"
               >
-                <Plus className="h-4 w-4" />
+                <Plus className="h-4 w-4 text-gold-300" />
                 <span>Add Story Section</span>
               </button>
             </div>
 
             {sections.length === 0 ? (
-              <div className="text-center py-10 bg-gray-50 rounded-2xl border border-dashed border-gray-300 p-6">
-                <p className="text-sm text-gray-500 mb-3">
+              <div className="text-center py-10 bg-ivory-surface rounded-2xl border border-dashed border-stone-300 p-6">
+                <p className="text-sm text-charcoal-500 mb-3">
                   No story sections added yet. Click below to add your first chapter!
                 </p>
                 <button
                   type="button"
                   onClick={handleAddSection}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-saffron-500 hover:bg-saffron-600 transition-colors shadow-sm"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 transition-colors shadow-xs"
                 >
-                  <Plus className="h-4 w-4" />
+                  <Plus className="h-4 w-4 text-gold-300" />
                   <span>Add First Section</span>
                 </button>
               </div>
@@ -433,11 +437,11 @@ export default function ProfileEditPage() {
                 {sections.map((sec, index) => (
                   <div
                     key={sec.id || index}
-                    className="p-5 rounded-2xl bg-gray-50/80 border border-gray-200 space-y-4 hover:border-gray-300 transition-all"
+                    className="p-5 rounded-2xl bg-ivory-surface/70 border border-stone-200/80 space-y-4 hover:border-stone-300 transition-all shadow-2xs"
                   >
                     {/* Chapter Header Controls */}
                     <div className="flex items-center justify-between">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold bg-white text-gray-700 border border-gray-200">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-bold bg-white text-maroon-900 border border-stone-200 shadow-2xs">
                         Chapter {index + 1}
                       </span>
 
@@ -447,7 +451,7 @@ export default function ProfileEditPage() {
                           type="button"
                           onClick={() => handleMoveUp(index)}
                           disabled={index === 0}
-                          className="p-1.5 text-gray-500 hover:text-gray-900 hover:bg-white rounded border border-transparent hover:border-gray-200 disabled:opacity-30 transition-all"
+                          className="p-1.5 text-charcoal-500 hover:text-charcoal-900 hover:bg-white rounded-lg border border-transparent hover:border-stone-200 disabled:opacity-30 transition-all"
                           title="Move section up"
                         >
                           <ArrowUp className="h-4 w-4" />
@@ -458,7 +462,7 @@ export default function ProfileEditPage() {
                           type="button"
                           onClick={() => handleMoveDown(index)}
                           disabled={index === sections.length - 1}
-                          className="p-1.5 text-gray-500 hover:text-gray-900 hover:bg-white rounded border border-transparent hover:border-gray-200 disabled:opacity-30 transition-all"
+                          className="p-1.5 text-charcoal-500 hover:text-charcoal-900 hover:bg-white rounded-lg border border-transparent hover:border-stone-200 disabled:opacity-30 transition-all"
                           title="Move section down"
                         >
                           <ArrowDown className="h-4 w-4" />
@@ -468,7 +472,7 @@ export default function ProfileEditPage() {
                         <button
                           type="button"
                           onClick={() => handleDeleteSection(index)}
-                          className="p-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-all ml-1"
+                          className="p-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-all ml-1"
                           title="Delete section"
                         >
                           <Trash2 className="h-4 w-4" />
@@ -478,7 +482,7 @@ export default function ProfileEditPage() {
 
                     {/* Section Heading */}
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                      <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                         Section Heading
                       </label>
                       <input
@@ -487,13 +491,13 @@ export default function ProfileEditPage() {
                         placeholder="e.g. Life in the Dormitory, Inter-House Football, My Civil Service Journey"
                         value={sec.heading}
                         onChange={(e) => handleHeadingChange(index, e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm font-semibold text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm font-semibold text-charcoal-900 bg-white focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all"
                       />
                     </div>
 
                     {/* Section Content */}
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                      <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                         Content & Reflections
                       </label>
                       <textarea
@@ -502,7 +506,7 @@ export default function ProfileEditPage() {
                         placeholder="Write your story, memories, achievements, or advice for younger students..."
                         value={sec.content}
                         onChange={(e) => handleContentChange(index, e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm text-gray-800 bg-white font-serif leading-relaxed focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-800 bg-white font-serif leading-relaxed focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all"
                       />
                     </div>
                   </div>
@@ -512,10 +516,10 @@ export default function ProfileEditPage() {
           </div>
 
           {/* Sticky Bottom Save Action */}
-          <div className="sticky bottom-4 z-20 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-gray-200 shadow-xl flex items-center justify-between">
+          <div className="sticky bottom-4 z-20 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-stone-200 shadow-elevated flex items-center justify-between">
             <Link
               to={profile?.slug ? `/alumni/${profile.slug}` : '/alumni'}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-600 hover:text-gray-900"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-600 hover:text-charcoal-900 transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Cancel / Back</span>
@@ -524,9 +528,9 @@ export default function ProfileEditPage() {
             <button
               type="submit"
               disabled={saving}
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl font-bold text-sm text-white bg-navodaya-green hover:bg-navodaya-darkGreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navodaya-green shadow-md hover:shadow-lg transition-all disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl font-bold text-sm text-white bg-maroon-800 hover:bg-maroon-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-maroon-700 shadow-md hover:shadow-lg transition-all disabled:opacity-50 border border-maroon-900/40"
             >
-              <Save className="h-4 w-4" />
+              <Save className="h-4 w-4 text-gold-300" />
               <span>{saving ? 'Saving Changes...' : 'Save All Changes'}</span>
             </button>
           </div>

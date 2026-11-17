@@ -16,17 +16,17 @@ export default function ProfileHeader({ alumnus, isOwner = false }) {
   };
 
   return (
-    <div className="bg-white rounded-3xl shadow-soft border border-gray-200 overflow-hidden mb-10">
-      {/* Editorial subtle banner with tricolor tone */}
-      <div className="h-32 sm:h-44 w-full bg-gradient-to-r from-saffron-100 via-amber-50 to-green-50 relative">
+    <div className="bg-white rounded-3xl shadow-soft border border-stone-200/90 overflow-hidden mb-8 sm:mb-10">
+      {/* Editorial subtle banner with academic tone */}
+      <div className="h-32 sm:h-44 w-full bg-gradient-to-r from-maroon-900/15 via-gold-100/40 to-stone-100 relative">
         <div className="absolute top-4 right-4 flex items-center gap-2">
           <button
             type="button"
             onClick={handleShare}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white/90 backdrop-blur-sm text-gray-700 hover:bg-white shadow-sm transition-all"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white/95 backdrop-blur-sm text-charcoal-700 hover:text-maroon-800 hover:bg-white shadow-2xs border border-stone-200 transition-all"
             title="Share this profile"
           >
-            <Share2 className="h-3.5 w-3.5 text-gray-500" />
+            <Share2 className="h-3.5 w-3.5 text-gold-600" />
             <span>Share</span>
           </button>
         </div>
@@ -39,9 +39,9 @@ export default function ProfileHeader({ alumnus, isOwner = false }) {
             <img
               src={alumnus.profile_image_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400'}
               alt={alumnus.full_name}
-              className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl object-cover border-4 border-white shadow-lg bg-white"
+              className="w-28 h-28 sm:w-36 sm:h-36 rounded-2xl object-cover border-4 border-white shadow-md bg-white ring-2 ring-gold-400/40"
             />
-            <span className="absolute bottom-2 right-2 px-2.5 py-1 text-xs font-extrabold rounded-lg bg-navodaya-navy text-white shadow-sm">
+            <span className="absolute bottom-2 right-2 px-2.5 py-1 text-xs font-extrabold rounded-lg bg-maroon-800 text-white shadow-xs border border-white">
               Batch {alumnus.passing_year}
             </span>
           </div>
@@ -51,7 +51,7 @@ export default function ProfileHeader({ alumnus, isOwner = false }) {
             <div className="sm:self-end">
               <a
                 href="/profile/edit"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-saffron-800 bg-saffron-50 hover:bg-saffron-100 border border-saffron-300 transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-maroon-900 bg-maroon-50 hover:bg-maroon-100 border border-maroon-200/80 transition-colors shadow-2xs"
               >
                 Edit Your Profile & Stories
               </a>
@@ -62,40 +62,40 @@ export default function ProfileHeader({ alumnus, isOwner = false }) {
         {/* Identity & Career */}
         <div className="space-y-3">
           <div>
-            <h1 className="text-2xl sm:text-4xl font-black text-gray-900 tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-black text-charcoal-900 tracking-tight font-serif">
               {alumnus.full_name}
             </h1>
-            <p className="text-base sm:text-lg font-semibold text-navodaya-green mt-1 flex items-center gap-2">
-              <Briefcase className="h-4 w-4" />
+            <p className="text-sm sm:text-base font-semibold text-gold-700 mt-1 flex items-center gap-2">
+              <Briefcase className="h-4 w-4 text-maroon-700" />
               <span>{alumnus.current_position || 'Navodaya Alumnus'}</span>
               {alumnus.company_or_institution && (
-                <span className="text-gray-500 font-normal">at {alumnus.company_or_institution}</span>
+                <span className="text-charcoal-500 font-normal">at {alumnus.company_or_institution}</span>
               )}
             </p>
           </div>
 
           {/* Bio statement */}
           {alumnus.bio && (
-            <p className="text-sm sm:text-base text-gray-700 max-w-3xl leading-relaxed pt-1">
+            <p className="text-xs sm:text-sm text-charcoal-700 max-w-3xl leading-relaxed pt-1">
               {alumnus.bio}
             </p>
           )}
 
           {/* Contact Details & Metadata */}
-          <div className="pt-4 border-t border-gray-100 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-gray-600">
+          <div className="pt-4 border-t border-stone-100 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-charcoal-600">
             {alumnus.location && (
               <div className="flex items-center gap-1.5">
-                <MapPin className="h-3.5 w-3.5 text-gray-400" />
+                <MapPin className="h-3.5 w-3.5 text-gold-600" />
                 <span>{alumnus.location}</span>
               </div>
             )}
 
             {alumnus.email && (
               <div className="flex items-center gap-1.5">
-                <Mail className="h-3.5 w-3.5 text-gray-400" />
+                <Mail className="h-3.5 w-3.5 text-maroon-700" />
                 <a
                   href={`mailto:${alumnus.email}`}
-                  className="hover:text-saffron-600 transition-colors underline decoration-gray-300"
+                  className="hover:text-maroon-800 transition-colors underline decoration-stone-300"
                 >
                   {alumnus.email}
                 </a>
@@ -104,13 +104,13 @@ export default function ProfileHeader({ alumnus, isOwner = false }) {
 
             {alumnus.contact_number && (
               <div className="flex items-center gap-1.5">
-                <Phone className="h-3.5 w-3.5 text-gray-400" />
+                <Phone className="h-3.5 w-3.5 text-gold-600" />
                 <span>{alumnus.contact_number}</span>
               </div>
             )}
 
-            <div className="flex items-center gap-1.5 text-gray-500">
-              <Calendar className="h-3.5 w-3.5 text-gray-400" />
+            <div className="flex items-center gap-1.5 text-charcoal-500">
+              <Calendar className="h-3.5 w-3.5 text-charcoal-400" />
               <span>Passing Class XII: {alumnus.passing_year}</span>
             </div>
           </div>

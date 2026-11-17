@@ -48,7 +48,7 @@ export default function AccountSettingsPage() {
   };
 
   return (
-    <div className="py-12 sm:py-16 bg-[#F8F9FA] min-h-screen">
+    <div className="py-12 sm:py-16 bg-[#FBFBF9] min-h-screen">
       <Seo
         title="Account Settings | JNV Nadia Alumni"
         description="Manage your account security, credentials and settings."
@@ -58,35 +58,35 @@ export default function AccountSettingsPage() {
         <div className="mb-6">
           <Link
             to="/profile/edit"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-gray-900 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-charcoal-500 hover:text-charcoal-900 transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to Profile Editor</span>
           </Link>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-soft border border-gray-200 p-6 sm:p-8 space-y-6">
-          <div className="flex items-center gap-3 pb-4 border-b border-gray-100">
-            <KeyRound className="h-6 w-6 text-saffron-600" />
+        <div className="bg-white rounded-3xl shadow-card border border-stone-200/90 p-6 sm:p-8 space-y-6">
+          <div className="flex items-center gap-3 pb-4 border-b border-stone-100">
+            <KeyRound className="h-6 w-6 text-maroon-800" />
             <div>
-              <h1 className="text-xl font-black text-gray-900">
+              <h1 className="text-xl font-black text-charcoal-900 font-display">
                 Account Security & Password
               </h1>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-charcoal-500">
                 Manage your credentials for {user?.email || 'your account'}
               </p>
             </div>
           </div>
 
           {status.type === 'success' && (
-            <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 text-emerald-600 flex-shrink-0" />
+            <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs flex items-center gap-2 shadow-2xs">
+              <CheckCircle2 className="h-4 w-4 text-emerald-700 flex-shrink-0" />
               <span>{status.message}</span>
             </div>
           )}
 
           {status.type === 'error' && (
-            <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
+            <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-900 text-xs flex items-center gap-2 shadow-2xs">
               <AlertCircle className="h-4 w-4 text-red-600 flex-shrink-0" />
               <span>{status.message}</span>
             </div>
@@ -94,7 +94,7 @@ export default function AccountSettingsPage() {
 
           <form onSubmit={handlePasswordChange} className="space-y-4">
             <div>
-              <label htmlFor="new-password" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+              <label htmlFor="new-password" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                 New Password
               </label>
               <div className="relative">
@@ -106,12 +106,12 @@ export default function AccountSettingsPage() {
                   placeholder="Minimum 6 characters"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                  className="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-2.5 text-charcoal-400 hover:text-charcoal-600 focus:outline-none"
                 >
                   {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
@@ -119,7 +119,7 @@ export default function AccountSettingsPage() {
             </div>
 
             <div>
-              <label htmlFor="confirm-password" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+              <label htmlFor="confirm-password" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                 Confirm New Password
               </label>
               <input
@@ -130,12 +130,12 @@ export default function AccountSettingsPage() {
                 placeholder="Re-enter new password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500"
+                className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
               />
             </div>
 
-            <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-600 flex items-start gap-2">
-              <Shield className="h-4 w-4 text-gray-400 flex-shrink-0 mt-0.5" />
+            <div className="p-3.5 rounded-xl bg-ivory-surface border border-stone-200 text-xs text-charcoal-600 flex items-start gap-2">
+              <Shield className="h-4 w-4 text-maroon-800 flex-shrink-0 mt-0.5" />
               <span>
                 Passwords are never stored in plain text and are authenticated using cryptographic bcrypt / argon2 hashes.
               </span>
@@ -144,7 +144,7 @@ export default function AccountSettingsPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3 px-4 rounded-xl font-bold text-sm text-white bg-navodaya-navy hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navodaya-navy shadow-sm transition-all disabled:opacity-50"
+              className="w-full py-3 px-4 rounded-xl font-bold text-sm text-white bg-maroon-800 hover:bg-maroon-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-maroon-700 shadow-md transition-all disabled:opacity-50 border border-maroon-900/30"
             >
               {submitting ? 'Updating Password...' : 'Update Password'}
             </button>

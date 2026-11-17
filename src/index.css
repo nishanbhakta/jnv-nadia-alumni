@@ -5,16 +5,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color: #202124;
-    background-color: #F8F9FA;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1C1B18;
+    background-color: #FBFBF9;
+    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
   }
 
   body {
     margin: 0;
     min-height: 100vh;
-    background-color: #F8F9FA;
-    color: #202124;
+    background-color: #FBFBF9;
+    color: #1C1B18;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -24,32 +24,36 @@
     display: flex;
     flex-direction: column;
   }
+
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+  }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F1F3F5;
+  background: #F4F4F0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #D5D3CA;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #B0AEA2;
 }
 
-/* Editorial subtle accents */
-.tricolor-border {
-  border-image: linear-gradient(to right, #FF9933 0%, #FF9933 33.3%, #FFFFFF 33.3%, #FFFFFF 66.6%, #138808 66.6%, #138808 100%) 1;
-}
-
+/* Academic subtle borders & tricolor accents */
 .tricolor-bar {
-  background: linear-gradient(to right, #FF9933 0%, #FF9933 33.3%, #E2E8F0 33.3%, #E2E8F0 66.6%, #138808 66.6%, #138808 100%);
+  background: linear-gradient(to right, #8E1734 0%, #8E1734 30%, #C5A059 30%, #C5A059 70%, #138808 70%, #138808 100%);
+}
+
+.gold-shimmer {
+  background: linear-gradient(135deg, rgba(197, 160, 89, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
 }

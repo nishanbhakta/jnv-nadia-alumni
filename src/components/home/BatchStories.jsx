@@ -22,18 +22,18 @@ export default function BatchStories() {
   }, []);
 
   return (
-    <section className="py-16 sm:py-20 bg-[#F8F9FA] border-b border-gray-100">
+    <section id="batch-stories" className="py-14 sm:py-20 bg-white border-b border-stone-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-navodaya-green bg-green-50 border border-green-200 mb-3">
-            <GraduationCap className="h-3.5 w-3.5" />
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-maroon-900 bg-maroon-50 border border-maroon-200/80 mb-3">
+            <GraduationCap className="h-3.5 w-3.5 text-maroon-700" />
             Batch Solidarity
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-black text-charcoal-900 tracking-tight font-serif">
             Stories From Your Batch
           </h2>
-          <p className="mt-2 text-base text-gray-600">
+          <p className="mt-2 text-sm sm:text-base text-charcoal-600 leading-relaxed">
             Relive memories and celebrate the milestones of the classmates you shared classrooms, sports grounds, and dining halls with.
           </p>
         </div>
@@ -42,63 +42,63 @@ export default function BatchStories() {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-gray-200 animate-pulse space-y-4">
-                <div className="h-6 bg-gray-200 rounded w-1/2" />
-                <div className="h-4 bg-gray-200 rounded w-1/3" />
-                <div className="h-20 bg-gray-200 rounded" />
+              <div key={i} className="bg-ivory-surface rounded-2xl p-6 border border-stone-200/80 animate-pulse space-y-4 shadow-soft">
+                <div className="h-6 bg-stone-200 rounded w-1/2" />
+                <div className="h-4 bg-stone-200 rounded w-1/3" />
+                <div className="h-20 bg-stone-200 rounded" />
               </div>
             ))}
           </div>
         ) : batches.length === 0 ? (
-          <div className="text-center py-10 bg-white rounded-2xl border border-gray-200 p-8 max-w-lg mx-auto">
-            <GraduationCap className="h-10 w-10 text-gray-400 mx-auto mb-2" />
-            <p className="text-gray-600 font-medium">Batch groupings will appear as alumni register.</p>
+          <div className="text-center py-10 bg-ivory-surface rounded-2xl border border-stone-200 p-8 max-w-lg mx-auto shadow-soft">
+            <GraduationCap className="h-10 w-10 text-charcoal-400 mx-auto mb-2" />
+            <p className="text-charcoal-600 font-medium text-sm">Batch groupings will appear as alumni register.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {batches.map((batch) => (
               <div
                 key={batch.passing_year}
-                className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between hover:border-saffron-300 hover:shadow-card transition-all duration-300 group"
+                className="bg-white rounded-2xl border border-stone-200/90 p-6 flex flex-col justify-between hover:border-gold-400 hover:shadow-card hover:-translate-y-0.5 transition-all duration-300 group shadow-soft"
               >
                 <div>
                   {/* Top Badge: Year & Count */}
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <span className="text-xs font-bold text-saffron-600 uppercase tracking-wider">
+                      <span className="text-[11px] font-bold text-gold-700 uppercase tracking-wider block">
                         Graduating Class
                       </span>
-                      <h3 className="text-2xl font-black text-gray-900 group-hover:text-navodaya-navy transition-colors">
+                      <h3 className="text-xl sm:text-2xl font-black text-charcoal-900 group-hover:text-maroon-900 transition-colors font-serif">
                         Batch of {batch.passing_year}
                       </h3>
                     </div>
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-700">
-                      <Users className="h-3 w-3 text-gray-500" />
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-ivory-surface text-charcoal-700 border border-stone-200">
+                      <Users className="h-3 w-3 text-gold-600" />
                       {batch.totalAlumni} {batch.totalAlumni === 1 ? 'alumnus' : 'alumni'}
                     </span>
                   </div>
 
                   {/* Stories Preview List */}
-                  <div className="space-y-3 my-4">
+                  <div className="space-y-2.5 my-4">
                     {batch.stories.length > 0 ? (
                       batch.stories.slice(0, 2).map((story) => (
-                        <div key={story.id} className="text-xs bg-gray-50 p-3 rounded-xl border border-gray-100">
+                        <div key={story.id} className="text-xs bg-[#FAF9F5] p-3 rounded-xl border border-stone-200/70">
                           <Link
                             to={`/alumni/${story.authorSlug}`}
-                            className="font-bold text-gray-800 hover:text-saffron-600 block line-clamp-1 mb-1"
+                            className="font-bold text-charcoal-900 hover:text-maroon-800 block line-clamp-1 mb-1 font-serif"
                           >
                             {story.heading}
                           </Link>
-                          <p className="text-gray-500 line-clamp-2 leading-relaxed">
+                          <p className="text-charcoal-600 line-clamp-2 leading-relaxed text-[11px]">
                             {story.preview}
                           </p>
-                          <span className="block mt-1 text-[11px] text-gray-400 italic">
+                          <span className="block mt-1 text-[10px] text-charcoal-400 italic">
                             By {story.authorName}
                           </span>
                         </div>
                       ))
                     ) : (
-                      <p className="text-xs text-gray-400 italic py-2">
+                      <p className="text-xs text-charcoal-400 italic py-2">
                         No stories posted yet for this batch.
                       </p>
                     )}
@@ -106,13 +106,13 @@ export default function BatchStories() {
                 </div>
 
                 {/* Footer action to filter directory by batch */}
-                <div className="pt-4 border-t border-gray-100 mt-4">
+                <div className="pt-4 border-t border-stone-100 mt-4">
                   <Link
                     to={`/alumni?batch=${batch.passing_year}`}
-                    className="inline-flex items-center justify-between w-full text-xs font-bold text-gray-700 hover:text-navodaya-green transition-colors"
+                    className="inline-flex items-center justify-between w-full text-xs font-bold text-maroon-800 hover:text-maroon-950 transition-colors"
                   >
                     <span>Browse Batch {batch.passing_year}</span>
-                    <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-gray-400 group-hover:text-navodaya-green" />
+                    <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-gold-600" />
                   </Link>
                 </div>
               </div>

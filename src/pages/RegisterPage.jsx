@@ -95,7 +95,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="py-12 sm:py-16 bg-[#F8F9FA] min-h-screen">
+    <div className="py-12 sm:py-16 bg-[#FBFBF9] min-h-screen">
       <Seo
         title="Join JNV Nadia Alumni | Create Your Profile"
         description="Register as a former student of Jawahar Navodaya Vidyalaya, Nadia. Preserve memories, share your career journey, and reconnect with batchmates."
@@ -103,21 +103,21 @@ export default function RegisterPage() {
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-saffron-700 bg-saffron-50 border border-saffron-200 mb-3">
-            <Sparkles className="h-3.5 w-3.5 text-saffron-500" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-maroon-900 bg-maroon-50/70 border border-maroon-200/80 mb-3">
+            <Sparkles className="h-3.5 w-3.5 text-gold-500" />
             Alumni Registration
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl font-display font-black text-charcoal-900 tracking-tight">
             Create Your Alumni Profile
           </h1>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-2 text-sm text-charcoal-500">
             Join the official alumni community of Jawahar Navodaya Vidyalaya, Nadia.
           </p>
         </div>
 
-        <div className="bg-white rounded-3xl shadow-soft border border-gray-200 p-6 sm:p-10">
+        <div className="bg-white rounded-3xl shadow-card border border-stone-200/90 p-6 sm:p-10">
           {error && (
-            <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs flex items-start gap-2.5">
+            <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-200 text-red-900 text-xs flex items-start gap-2.5 shadow-2xs">
               <AlertCircle className="h-4 w-4 text-red-600 flex-shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
@@ -125,27 +125,27 @@ export default function RegisterPage() {
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* 1. Profile Photo Upload */}
-            <div className="flex flex-col sm:flex-row items-center gap-5 p-4 rounded-2xl bg-gray-50 border border-gray-200">
+            <div className="flex flex-col sm:flex-row items-center gap-5 p-4 rounded-2xl bg-ivory-surface border border-stone-200/80">
               <div className="relative">
                 <img
                   src={photoPreview || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200'}
                   alt="Preview"
-                  className="w-20 h-20 rounded-full object-cover border-2 border-white shadow-md bg-white"
+                  className="w-20 h-20 rounded-full object-cover border-2 border-white shadow-soft bg-white ring-1 ring-gold-400/40"
                 />
               </div>
 
               <div className="flex-1 text-center sm:text-left">
-                <label className="block text-xs font-bold text-gray-800 uppercase tracking-wider mb-1">
+                <label className="block text-xs font-bold text-charcoal-800 uppercase tracking-wider mb-1">
                   Profile Photograph
                 </label>
-                <p className="text-xs text-gray-500 mb-2">
+                <p className="text-xs text-charcoal-500 mb-2">
                   JPG, PNG or WebP (max 5MB). Will be optimized automatically.
                 </p>
                 <label
                   htmlFor="photo-upload"
-                  className="cursor-pointer inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold text-gray-700 bg-white hover:bg-gray-100 border border-gray-300 shadow-sm transition-all"
+                  className="cursor-pointer inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold text-charcoal-700 bg-white hover:bg-stone-50 border border-stone-200 shadow-2xs transition-all"
                 >
-                  <Upload className="h-3.5 w-3.5 text-gray-500" />
+                  <Upload className="h-3.5 w-3.5 text-charcoal-500" />
                   <span>Choose Photo</span>
                   <input
                     id="photo-upload"
@@ -161,8 +161,8 @@ export default function RegisterPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Full Name */}
               <div className="sm:col-span-2">
-                <label htmlFor="reg-name" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
-                  Full Name <span className="text-red-500">*</span>
+                <label htmlFor="reg-name" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  Full Name <span className="text-maroon-700">*</span>
                 </label>
                 <input
                   id="reg-name"
@@ -171,14 +171,14 @@ export default function RegisterPage() {
                   placeholder="e.g. Nishan Bhakta"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               {/* Email Address */}
               <div>
-                <label htmlFor="reg-email" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
-                  Email Address <span className="text-red-500">*</span>
+                <label htmlFor="reg-email" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  Email Address <span className="text-maroon-700">*</span>
                 </label>
                 <input
                   id="reg-email"
@@ -187,13 +187,13 @@ export default function RegisterPage() {
                   placeholder="name@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               {/* Contact Number */}
               <div>
-                <label htmlFor="reg-phone" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                <label htmlFor="reg-phone" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Contact Number
                 </label>
                 <input
@@ -202,15 +202,15 @@ export default function RegisterPage() {
                   placeholder="+91 98765 43210"
                   value={formData.contactNumber}
                   onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               {/* Date of Birth (Private) */}
               <div>
-                <label htmlFor="reg-dob" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5 flex items-center justify-between">
-                  <span>Date of Birth <span className="text-red-500">*</span></span>
-                  <span className="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">
+                <label htmlFor="reg-dob" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                  <span>Date of Birth <span className="text-maroon-700">*</span></span>
+                  <span className="text-[10px] text-emerald-800 font-bold bg-emerald-50 border border-emerald-200/80 px-2 py-0.5 rounded-md">
                     Always Private
                   </span>
                 </label>
@@ -220,24 +220,24 @@ export default function RegisterPage() {
                   required
                   value={formData.dateOfBirth}
                   onChange={(e) => setFormData({ ...formData, dateOfBirth: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
-                <p className="text-[11px] text-gray-400 mt-1">
+                <p className="text-[11px] text-charcoal-400 mt-1">
                   Used for verification only. NEVER shown on your public profile.
                 </p>
               </div>
 
               {/* Passing-out Year */}
               <div>
-                <label htmlFor="reg-year" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
-                  Class XII Passing Year <span className="text-red-500">*</span>
+                <label htmlFor="reg-year" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  Class XII Passing Year <span className="text-maroon-700">*</span>
                 </label>
                 <select
                   id="reg-year"
                   required
                   value={formData.passingYear}
                   onChange={(e) => setFormData({ ...formData, passingYear: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm bg-white text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all font-medium"
                 >
                   {batchYears.map((yr) => (
                     <option key={yr} value={yr}>
@@ -249,7 +249,7 @@ export default function RegisterPage() {
 
               {/* Current Position */}
               <div className="sm:col-span-2">
-                <label htmlFor="reg-position" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                <label htmlFor="reg-position" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Current Position / Profession
                 </label>
                 <input
@@ -258,13 +258,13 @@ export default function RegisterPage() {
                   placeholder="e.g. Lead Software Engineer, Resident Doctor, Civil Servant"
                   value={formData.currentPosition}
                   onChange={(e) => setFormData({ ...formData, currentPosition: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               {/* Company / Institution */}
               <div>
-                <label htmlFor="reg-company" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                <label htmlFor="reg-company" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Organization / Institution
                 </label>
                 <input
@@ -273,13 +273,13 @@ export default function RegisterPage() {
                   placeholder="e.g. Tech Labs, AIIMS, Govt of India"
                   value={formData.companyOrInstitution}
                   onChange={(e) => setFormData({ ...formData, companyOrInstitution: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               {/* Current Location */}
               <div>
-                <label htmlFor="reg-location" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                <label htmlFor="reg-location" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Current City / Country
                 </label>
                 <input
@@ -288,14 +288,14 @@ export default function RegisterPage() {
                   placeholder="e.g. Bengaluru, India or London, UK"
                   value={formData.location}
                   onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
 
               {/* Password */}
               <div className="sm:col-span-2">
-                <label htmlFor="reg-password" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
-                  Account Password <span className="text-red-500">*</span>
+                <label htmlFor="reg-password" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  Account Password <span className="text-maroon-700">*</span>
                 </label>
                 <div className="relative">
                   <input
@@ -306,12 +306,12 @@ export default function RegisterPage() {
                     placeholder="Minimum 6 characters"
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                    className="w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600 focus:outline-none"
+                    className="absolute right-3 top-2.5 text-charcoal-400 hover:text-charcoal-600 focus:outline-none"
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -320,7 +320,7 @@ export default function RegisterPage() {
 
               {/* Short Bio */}
               <div className="sm:col-span-2">
-                <label htmlFor="reg-bio" className="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">
+                <label htmlFor="reg-bio" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
                   Short Bio / Introduction
                 </label>
                 <textarea
@@ -330,14 +330,14 @@ export default function RegisterPage() {
                   placeholder="Brief note about yourself and your Navodaya days..."
                   value={formData.bio}
                   onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-saffron-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>
             </div>
 
             {/* Privacy & Security Note */}
-            <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-600 flex items-start gap-2.5">
-              <Shield className="h-4 w-4 text-navodaya-green flex-shrink-0 mt-0.5" />
+            <div className="p-4 rounded-xl bg-ivory-surface border border-stone-200 text-xs text-charcoal-600 flex items-start gap-2.5">
+              <Shield className="h-4 w-4 text-maroon-800 flex-shrink-0 mt-0.5" />
               <span>
                 Your data is stored securely in encrypted PostgreSQL. Passwords are never stored in raw text, 
                 and Date of Birth is never exposed in public queries.
@@ -348,15 +348,15 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-navodaya-green hover:bg-navodaya-darkGreen focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navodaya-green shadow-md hover:shadow-lg transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+              className="w-full py-3.5 px-6 rounded-xl font-bold text-sm text-white bg-maroon-800 hover:bg-maroon-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-maroon-700 shadow-md hover:shadow-lg transition-all disabled:opacity-50 flex items-center justify-center gap-2 border border-maroon-900/40"
             >
-              <UserPlus className="h-4 w-4" />
+              <UserPlus className="h-4 w-4 text-gold-300" />
               <span>{submitting ? 'Creating Profile...' : 'Complete Registration & Publish Profile'}</span>
             </button>
 
-            <div className="text-center text-xs text-gray-500">
+            <div className="text-center text-xs text-charcoal-500">
               Already have an account?{' '}
-              <Link to="/login" className="font-bold text-saffron-600 hover:underline">
+              <Link to="/login" className="font-bold text-maroon-800 hover:text-maroon-900 hover:underline">
                 Sign In here
               </Link>
             </div>
