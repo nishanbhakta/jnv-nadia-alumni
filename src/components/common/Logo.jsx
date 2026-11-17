@@ -14,9 +14,9 @@ export default function Logo({
       {/* Official Navodaya Vidyalaya Samiti Crest - Prominent & Visually Balanced */}
       <div className="flex-shrink-0 flex items-center justify-center">
         <img
-          src="/nvs-logo.png"
+          src="/logo.png"
           alt="Navodaya Vidyalaya Samiti Official Emblem"
-          className="h-11 sm:h-14 md:h-16 w-auto object-contain drop-shadow-2xs transition-transform duration-200 group-hover:scale-105"
+          className="h-12 sm:h-16 md:h-[72px] w-auto object-contain drop-shadow-2xs transition-transform duration-200 group-hover:scale-105"
         />
       </div>
 
@@ -24,9 +24,9 @@ export default function Logo({
       {showBanner ? (
         <div className="flex items-center">
           <img
-            src="/jnv-nadia-banner.jpg"
+            src="/banner.png"
             alt="JNV Nadia Alumni"
-            className="h-9 sm:h-12 md:h-14 w-auto max-w-[180px] xs:max-w-[210px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-[380px] object-contain object-left transition-opacity duration-200 group-hover:opacity-95"
+            className="h-12 sm:h-16 md:h-[72px] w-auto max-w-[200px] xs:max-w-[230px] sm:max-w-[300px] md:max-w-[360px] lg:max-w-[420px] object-contain object-left origin-left scale-[1.4] transition-opacity duration-200 group-hover:opacity-95"
           />
         </div>
       ) : showText ? (

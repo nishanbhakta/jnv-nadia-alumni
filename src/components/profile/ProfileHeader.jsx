@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Briefcase, Calendar, Award, Share2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Briefcase, Calendar, Award, Share2, Lock } from 'lucide-react';
 
 export default function ProfileHeader({ alumnus, isOwner = false }) {
   const handleShare = () => {
@@ -90,7 +90,8 @@ export default function ProfileHeader({ alumnus, isOwner = false }) {
               </div>
             )}
 
-            {alumnus.email && (
+            {/* Email / Gmail with Private / Public Control */}
+            {alumnus.email && (alumnus.is_email_public !== false || isOwner) ? (
               <div className="flex items-center gap-1.5">
                 <Mail className="h-3.5 w-3.5 text-maroon-700" />
                 <a
@@ -99,15 +100,38 @@ export default function ProfileHeader({ alumnus, isOwner = false }) {
                 >
                   {alumnus.email}
                 </a>
+                {alumnus.is_email_public === false && isOwner && (
+                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                    <Lock className="h-2.5 w-2.5 text-amber-700" />
+                    Private to you
+                  </span>
+                )}
               </div>
-            )}
+            ) : alumnus.email && alumnus.is_email_public === false ? (
+              <div className="flex items-center gap-1.5 text-stone-400" title="Email address is kept private by this alumnus">
+                <Lock className="h-3 w-3 text-stone-400" />
+                <span className="italic">Email Private</span>
+              </div>
+            ) : null}
 
-            {alumnus.contact_number && (
+            {/* Contact Number with Private / Public Control */}
+            {alumnus.contact_number && (alumnus.is_phone_public === true || isOwner) ? (
               <div className="flex items-center gap-1.5">
                 <Phone className="h-3.5 w-3.5 text-gold-600" />
-                <span>{alumnus.contact_number}</span>
+                <a
+                  href={`tel:${alumnus.contact_number}`}
+                  className="hover:text-maroon-800 transition-colors"
+                >
+                  {alumnus.contact_number}
+                </a>
+                {alumnus.is_phone_public !== true && isOwner && (
+                  <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                    <Lock className="h-2.5 w-2.5 text-amber-700" />
+                    Private to you
+                  </span>
+                )}
               </div>
-            )}
+            ) : null}
 
             <div className="flex items-center gap-1.5 text-charcoal-500">
               <Calendar className="h-3.5 w-3.5 text-charcoal-400" />

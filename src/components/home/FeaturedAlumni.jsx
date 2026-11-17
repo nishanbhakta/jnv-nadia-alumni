@@ -49,73 +49,73 @@ export default function FeaturedAlumni() {
 
         {/* Profiles Grid */}
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-stone-200/80 animate-pulse space-y-4 shadow-soft">
-                <div className="w-24 h-24 bg-stone-200 rounded-full mx-auto" />
-                <div className="h-5 bg-stone-200 rounded w-2/3 mx-auto" />
-                <div className="h-4 bg-stone-200 rounded w-1/2 mx-auto" />
-                <div className="h-16 bg-stone-200 rounded" />
+              <div key={i} className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-stone-200/80 animate-pulse space-y-3 shadow-soft">
+                <div className="w-14 h-14 sm:w-24 sm:h-24 bg-stone-200 rounded-full mx-auto" />
+                <div className="h-4 bg-stone-200 rounded w-2/3 mx-auto" />
+                <div className="h-3 bg-stone-200 rounded w-1/2 mx-auto" />
+                <div className="h-10 bg-stone-200 rounded" />
               </div>
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
             {alumni.map((person) => (
               <div
                 key={person.id}
-                className="bg-white rounded-2xl border border-stone-200/90 p-6 flex flex-col items-center text-center shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
+                className="bg-white rounded-xl sm:rounded-2xl border border-stone-200/90 p-2.5 sm:p-6 flex flex-col items-center text-center shadow-soft hover:shadow-card hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden"
               >
                 {/* Subtle National Accent Line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-maroon-800 via-gold-400 to-navodaya-green opacity-0 group-hover:opacity-100 transition-opacity" />
 
                 {/* Profile Photo */}
-                <div className="relative mb-4 mt-2">
+                <div className="relative mb-2 sm:mb-4 mt-1 sm:mt-2">
                   <img
                     src={person.profile_image_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300'}
                     alt={person.full_name}
-                    className="w-24 h-24 rounded-full object-cover border-2 border-white shadow-md ring-2 ring-gold-400/40 group-hover:scale-105 transition-transform duration-300"
+                    className="w-14 h-14 sm:w-24 sm:h-24 rounded-full object-cover border-2 border-white shadow-md ring-2 ring-gold-400/40 group-hover:scale-105 transition-transform duration-300"
                     loading="lazy"
                   />
-                  <span className="absolute bottom-0 right-0 px-2 py-0.5 text-[10px] font-bold rounded-full bg-maroon-800 text-white shadow-xs border border-white">
+                  <span className="absolute bottom-0 right-0 px-1 sm:px-2 py-0.5 text-[8px] sm:text-[10px] font-bold rounded-full bg-maroon-800 text-white shadow-xs border border-white">
                     {person.passing_year}
                   </span>
                 </div>
 
                 {/* Name & Title */}
-                <h3 className="font-bold text-base sm:text-lg text-charcoal-900 group-hover:text-maroon-800 transition-colors truncate max-w-full font-serif">
+                <h3 className="font-bold text-xs sm:text-lg text-charcoal-900 group-hover:text-maroon-800 transition-colors truncate max-w-full font-serif">
                   {person.full_name}
                 </h3>
                 
-                <p className="text-xs font-semibold text-gold-700 flex items-center gap-1 mt-1 truncate max-w-full">
-                  <Briefcase className="h-3 w-3 flex-shrink-0" />
+                <p className="text-[10px] sm:text-xs font-semibold text-gold-700 flex items-center justify-center gap-1 mt-0.5 sm:mt-1 truncate max-w-full">
+                  <Briefcase className="h-2.5 w-2.5 sm:h-3 sm:w-3 flex-shrink-0" />
                   <span className="truncate">{person.current_position || 'Navodaya Alumnus'}</span>
                 </p>
 
                 {person.location && (
-                  <p className="text-[11px] text-charcoal-500 flex items-center gap-1 mt-1">
-                    <MapPin className="h-3 w-3 text-charcoal-400" />
-                    <span>{person.location}</span>
+                  <p className="text-[9px] sm:text-[11px] text-charcoal-500 flex items-center justify-center gap-1 mt-0.5 sm:mt-1 truncate max-w-full">
+                    <MapPin className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-charcoal-400 flex-shrink-0" />
+                    <span className="truncate">{person.location}</span>
                   </p>
                 )}
 
                 {/* Short Bio */}
-                <p className="text-xs text-charcoal-600 line-clamp-3 mt-3 leading-relaxed flex-1">
+                <p className="text-[10px] sm:text-xs text-charcoal-600 line-clamp-2 sm:line-clamp-3 mt-1.5 sm:mt-3 leading-relaxed flex-1">
                   {person.bio || 'Alumnus of JNV Nadia reconnecting with friends and sharing school memories.'}
                 </p>
 
                 {/* Community Metrics: Likes, Views, Stories */}
-                <div className="flex items-center justify-center gap-4 py-3 my-2 border-y border-stone-100 w-full text-[11px] text-charcoal-500">
+                <div className="flex items-center justify-center gap-2 sm:gap-4 py-1.5 sm:py-3 my-1.5 sm:my-2 border-y border-stone-100 w-full text-[9px] sm:text-[11px] text-charcoal-500">
                   <span className="flex items-center gap-1" title={`${person.likesCount || 0} Likes`}>
-                    <Heart className="h-3.5 w-3.5 text-maroon-600 fill-maroon-50" />
+                    <Heart className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-maroon-600 fill-maroon-50" />
                     {person.likesCount || 0}
                   </span>
                   <span className="flex items-center gap-1" title={`${person.viewsCount || 0} Profile views`}>
-                    <Eye className="h-3.5 w-3.5 text-gold-600" />
+                    <Eye className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-gold-600" />
                     {person.viewsCount || 0}
                   </span>
                   <span className="flex items-center gap-1" title={`${person.storyCount || 0} Stories published`}>
-                    <BookOpen className="h-3.5 w-3.5 text-navodaya-green" />
+                    <BookOpen className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-navodaya-green" />
                     {person.storyCount || 0}
                   </span>
                 </div>
@@ -123,9 +123,10 @@ export default function FeaturedAlumni() {
                 {/* View Profile Action */}
                 <Link
                   to={`/alumni/${person.slug}`}
-                  className="w-full mt-2 py-2 px-3 rounded-xl text-xs font-bold text-center text-charcoal-800 bg-[#FAF9F5] border border-stone-200/80 group-hover:bg-maroon-800 group-hover:text-white group-hover:border-maroon-800 transition-all shadow-2xs"
+                  className="w-full mt-1 sm:mt-2 py-1.5 sm:py-2 px-1.5 sm:px-3 rounded-lg sm:rounded-xl text-[10px] sm:text-xs font-bold text-center text-charcoal-800 bg-[#FAF9F5] border border-stone-200/80 group-hover:bg-maroon-800 group-hover:text-white group-hover:border-maroon-800 transition-all shadow-2xs"
                 >
-                  View Profile & Journey
+                  <span className="sm:hidden">View Profile</span>
+                  <span className="hidden sm:inline">View Profile & Journey</span>
                 </Link>
               </div>
             ))}

@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS public.alumni (
     slug TEXT NOT NULL UNIQUE,
     contact_number TEXT,
     email TEXT NOT NULL,
+    is_email_public BOOLEAN NOT NULL DEFAULT true,
+    is_phone_public BOOLEAN NOT NULL DEFAULT false,
     date_of_birth DATE, -- PRIVATE: Never exposed in public directory queries
     passing_year INTEGER NOT NULL CHECK (passing_year BETWEEN 1980 AND 2050),
     current_position TEXT,
@@ -120,7 +122,7 @@ AS $$
     );
 $$;
 
--- Secure Public Alumni View (NEVER exposes date_of_birth or private contact number to public queries)
+-- Secure Public Alumni View (Respects user privacy settings for email and phone number)
 CREATE OR REPLACE VIEW public.public_alumni AS
 SELECT 
     id,
@@ -132,6 +134,10 @@ SELECT
     location,
     bio,
     profile_image_url,
+    CASE WHEN is_email_public THEN email ELSE NULL END AS email,
+    CASE WHEN is_phone_public THEN contact_number ELSE NULL END AS contact_number,
+    is_email_public,
+    is_phone_public,
     is_active,
     is_featured,
     created_at,

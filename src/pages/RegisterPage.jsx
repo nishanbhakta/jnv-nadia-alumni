@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UserPlus, Upload, Shield, Eye, EyeOff, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
+import { UserPlus, Upload, Shield, Eye, EyeOff, CheckCircle2, AlertCircle, Sparkles, Globe, Lock } from 'lucide-react';
 import Seo from '../components/common/Seo';
 import { useAuth } from '../contexts/AuthContext';
 import { uploadProfilePhoto, validateImageFile } from '../services/storageService';
@@ -14,12 +14,15 @@ export default function RegisterPage() {
     email: '',
     password: '',
     contactNumber: '',
+    isEmailPublic: true,
+    isPhonePublic: false,
     dateOfBirth: '',
     passingYear: '2016',
     currentPosition: '',
     companyOrInstitution: '',
     location: '',
     bio: '',
+    jnvStory: '',
   });
 
   const [photoFile, setPhotoFile] = useState(null);
@@ -175,11 +178,21 @@ export default function RegisterPage() {
                 />
               </div>
 
-              {/* Email Address */}
-              <div>
-                <label htmlFor="reg-email" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
-                  Email Address <span className="text-maroon-700">*</span>
-                </label>
+              {/* Email Address with Privacy Option */}
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label htmlFor="reg-email" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider">
+                    Gmail / Email <span className="text-maroon-700">*</span>
+                  </label>
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 ${
+                    formData.isEmailPublic 
+                      ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
+                      : 'bg-stone-100 text-stone-700 border border-stone-200'
+                  }`}>
+                    {formData.isEmailPublic ? <Globe className="h-2.5 w-2.5 text-emerald-700" /> : <Lock className="h-2.5 w-2.5 text-stone-600" />}
+                    {formData.isEmailPublic ? 'Public' : 'Private'}
+                  </span>
+                </div>
                 <input
                   id="reg-email"
                   type="email"
@@ -187,23 +200,85 @@ export default function RegisterPage() {
                   placeholder="name@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
+                  className="w-full px-3.5 py-2 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, isEmailPublic: true })}
+                    className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 border transition-all ${
+                      formData.isEmailPublic
+                        ? 'bg-[#760A21] text-white border-[#760A21] shadow-2xs'
+                        : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-50'
+                    }`}
+                  >
+                    <Globe className="h-3 w-3" />
+                    <span>Public</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, isEmailPublic: false })}
+                    className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 border transition-all ${
+                      !formData.isEmailPublic
+                        ? 'bg-charcoal-800 text-white border-charcoal-800 shadow-2xs'
+                        : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-50'
+                    }`}
+                  >
+                    <Lock className="h-3 w-3" />
+                    <span>Private</span>
+                  </button>
+                </div>
               </div>
 
-              {/* Contact Number */}
-              <div>
-                <label htmlFor="reg-phone" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
-                  Contact Number
-                </label>
+              {/* Contact Number with Privacy Option */}
+              <div className="space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <label htmlFor="reg-phone" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider">
+                    Contact Number
+                  </label>
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 ${
+                    formData.isPhonePublic 
+                      ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' 
+                      : 'bg-stone-100 text-stone-700 border border-stone-200'
+                  }`}>
+                    {formData.isPhonePublic ? <Globe className="h-2.5 w-2.5 text-emerald-700" /> : <Lock className="h-2.5 w-2.5 text-stone-600" />}
+                    {formData.isPhonePublic ? 'Public' : 'Private'}
+                  </span>
+                </div>
                 <input
                   id="reg-phone"
                   type="tel"
                   placeholder="+91 98765 43210"
                   value={formData.contactNumber}
                   onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
+                  className="w-full px-3.5 py-2 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, isPhonePublic: true })}
+                    className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 border transition-all ${
+                      formData.isPhonePublic
+                        ? 'bg-[#760A21] text-white border-[#760A21] shadow-2xs'
+                        : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-50'
+                    }`}
+                  >
+                    <Globe className="h-3 w-3" />
+                    <span>Public</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setFormData({ ...formData, isPhonePublic: false })}
+                    className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 border transition-all ${
+                      !formData.isPhonePublic
+                        ? 'bg-charcoal-800 text-white border-charcoal-800 shadow-2xs'
+                        : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-50'
+                    }`}
+                  >
+                    <Lock className="h-3 w-3" />
+                    <span>Private</span>
+                  </button>
+                </div>
               </div>
 
               {/* Date of Birth (Private) */}
@@ -245,21 +320,9 @@ export default function RegisterPage() {
                     </option>
                   ))}
                 </select>
-              </div>
-
-              {/* Current Position */}
-              <div className="sm:col-span-2">
-                <label htmlFor="reg-position" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
-                  Current Position / Profession
-                </label>
-                <input
-                  id="reg-position"
-                  type="text"
-                  placeholder="e.g. Lead Software Engineer, Resident Doctor, Civil Servant"
-                  value={formData.currentPosition}
-                  onChange={(e) => setFormData({ ...formData, currentPosition: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
-                />
+                <p className="text-[11px] text-charcoal-500 mt-1">
+                  Enter the year you completed Class 12th, even if you completed it at another JNV (for example, 2026).
+                </p>
               </div>
 
               {/* Company / Institution */}
@@ -330,6 +393,37 @@ export default function RegisterPage() {
                   placeholder="Brief note about yourself and your Navodaya days..."
                   value={formData.bio}
                   onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
+                />
+              </div>
+
+              {/* Current Work */}
+              <div className="sm:col-span-2">
+                <label htmlFor="reg-current-position" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  What are you doing now? <span className="text-charcoal-400 font-normal normal-case">(Optional)</span>
+                </label>
+                <input
+                  id="reg-current-position"
+                  type="text"
+                  placeholder="e.g. Software Engineer, Doctor, Student, Entrepreneur"
+                  value={formData.currentPosition}
+                  onChange={(e) => setFormData({ ...formData, currentPosition: e.target.value })}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
+                />
+              </div>
+
+              {/* JNV Life Story */}
+              <div className="sm:col-span-2">
+                <label htmlFor="reg-jnv-story" className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
+                  A Story From Your JNV Life <span className="text-charcoal-400 font-normal normal-case">(Optional)</span>
+                </label>
+                <textarea
+                  id="reg-jnv-story"
+                  rows={4}
+                  maxLength={2000}
+                  placeholder="Share a memorable moment, friendship, teacher, hostel memory, or lesson from JNV Nadia..."
+                  value={formData.jnvStory}
+                  onChange={(e) => setFormData({ ...formData, jnvStory: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
               </div>

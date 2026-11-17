@@ -100,6 +100,7 @@ export default function Footer() {
             <span>Designed and developed by</span>
             <Link
               to={`/alumni/${developerSlug}`}
+              onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })}
               className="font-bold text-maroon-900 hover:text-maroon-700 underline decoration-gold-400 decoration-2 underline-offset-4 hover:decoration-maroon-700 transition-all inline-flex items-center gap-1"
               title="Visit Nishan Bhakta's Alumni Profile & Story"
             >

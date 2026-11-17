@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { Plus, Trash2, ArrowUp, ArrowDown, Save, Eye, CheckCircle2, AlertCircle, BookOpen, User, Upload, ArrowLeft } from 'lucide-react';
+import { Plus, Trash2, ArrowUp, ArrowDown, Save, Eye, CheckCircle2, AlertCircle, BookOpen, User, Upload, ArrowLeft, Globe, Lock } from 'lucide-react';
 import Seo from '../components/common/Seo';
 import { useAuth } from '../contexts/AuthContext';
 import { getStorySections, saveStorySections } from '../services/storyService';
@@ -21,6 +21,8 @@ export default function ProfileEditPage() {
     bio: '',
     contact_number: '',
     profile_image_url: '',
+    is_email_public: true,
+    is_phone_public: false,
   });
 
   // Story sections state
@@ -48,6 +50,8 @@ export default function ProfileEditPage() {
         bio: profile.bio || '',
         contact_number: profile.contact_number || '',
         profile_image_url: profile.profile_image_url || '',
+        is_email_public: profile.is_email_public !== undefined ? profile.is_email_public : true,
+        is_phone_public: profile.is_phone_public !== undefined ? profile.is_phone_public : false,
       });
 
       // Load stories
@@ -168,6 +172,8 @@ export default function ProfileEditPage() {
         location: personalInfo.location.trim(),
         bio: personalInfo.bio.trim(),
         contact_number: personalInfo.contact_number.trim(),
+        is_email_public: personalInfo.is_email_public,
+        is_phone_public: personalInfo.is_phone_public,
       });
 
       // 2. Save story sections
@@ -353,17 +359,113 @@ export default function ProfileEditPage() {
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">
-                  Contact Number
-                </label>
+              {/* Email / Gmail with Privacy Toggle */}
+              <div className="bg-stone-50/80 p-3.5 rounded-2xl border border-stone-200/90 space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider">
+                    Gmail / Email Address
+                  </label>
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 ${
+                    personalInfo.is_email_public 
+                      ? 'bg-emerald-100/80 text-emerald-900 border border-emerald-300' 
+                      : 'bg-stone-200/80 text-stone-700 border border-stone-300'
+                  }`}>
+                    {personalInfo.is_email_public ? <Globe className="h-2.5 w-2.5 text-emerald-700" /> : <Lock className="h-2.5 w-2.5 text-stone-600" />}
+                    {personalInfo.is_email_public ? 'Public' : 'Private'}
+                  </span>
+                </div>
+                <input
+                  type="email"
+                  disabled
+                  value={profile?.email || user?.email || ''}
+                  className="w-full px-3.5 py-2 rounded-xl border border-stone-200 bg-white/70 text-xs text-charcoal-600 font-medium cursor-not-allowed"
+                />
+                <div className="flex items-center gap-1.5 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setPersonalInfo({ ...personalInfo, is_email_public: true })}
+                    className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 border transition-all ${
+                      personalInfo.is_email_public
+                        ? 'bg-[#760A21] text-white border-[#760A21] shadow-2xs'
+                        : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-100'
+                    }`}
+                  >
+                    <Globe className="h-3 w-3" />
+                    <span>Public</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPersonalInfo({ ...personalInfo, is_email_public: false })}
+                    className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 border transition-all ${
+                      !personalInfo.is_email_public
+                        ? 'bg-charcoal-800 text-white border-charcoal-800 shadow-2xs'
+                        : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-100'
+                    }`}
+                  >
+                    <Lock className="h-3 w-3" />
+                    <span>Private</span>
+                  </button>
+                </div>
+                <p className="text-[10px] text-charcoal-500">
+                  {personalInfo.is_email_public 
+                    ? 'Visible on your profile: alumni can email you directly.'
+                    : 'Private: hidden from public visitors and only visible to you.'}
+                </p>
+              </div>
+
+              {/* Contact Number with Privacy Toggle */}
+              <div className="bg-stone-50/80 p-3.5 rounded-2xl border border-stone-200/90 space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="block text-xs font-bold text-charcoal-700 uppercase tracking-wider">
+                    Contact / Phone Number
+                  </label>
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1 ${
+                    personalInfo.is_phone_public 
+                      ? 'bg-emerald-100/80 text-emerald-900 border border-emerald-300' 
+                      : 'bg-stone-200/80 text-stone-700 border border-stone-300'
+                  }`}>
+                    {personalInfo.is_phone_public ? <Globe className="h-2.5 w-2.5 text-emerald-700" /> : <Lock className="h-2.5 w-2.5 text-stone-600" />}
+                    {personalInfo.is_phone_public ? 'Public' : 'Private'}
+                  </span>
+                </div>
                 <input
                   type="tel"
                   placeholder="+91 98765 43210"
                   value={personalInfo.contact_number}
                   onChange={(e) => setPersonalInfo({ ...personalInfo, contact_number: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 text-sm text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
+                  className="w-full px-3.5 py-2 rounded-xl border border-stone-200 text-xs text-charcoal-900 focus:outline-none focus:ring-2 focus:ring-maroon-700/20 focus:border-maroon-800 transition-all bg-white"
                 />
+                <div className="flex items-center gap-1.5 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setPersonalInfo({ ...personalInfo, is_phone_public: true })}
+                    className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 border transition-all ${
+                      personalInfo.is_phone_public
+                        ? 'bg-[#760A21] text-white border-[#760A21] shadow-2xs'
+                        : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-100'
+                    }`}
+                  >
+                    <Globe className="h-3 w-3" />
+                    <span>Public</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPersonalInfo({ ...personalInfo, is_phone_public: false })}
+                    className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 border transition-all ${
+                      !personalInfo.is_phone_public
+                        ? 'bg-charcoal-800 text-white border-charcoal-800 shadow-2xs'
+                        : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-100'
+                    }`}
+                  >
+                    <Lock className="h-3 w-3" />
+                    <span>Private</span>
+                  </button>
+                </div>
+                <p className="text-[10px] text-charcoal-500">
+                  {personalInfo.is_phone_public
+                    ? 'Visible on your profile: alumni can call or WhatsApp you.'
+                    : 'Private: hidden from public visitors and only visible to you.'}
+                </p>
               </div>
 
               <div>

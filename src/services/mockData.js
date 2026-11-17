@@ -27,6 +27,8 @@ const INITIAL_ALUMNI = [
     location: 'Bengaluru, India',
     bio: 'Alumnus of JNV Nadia (Batch 2016). Passionate about distributed systems, modern web platforms, and open-source civic technology.',
     profile_image_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600',
+    is_email_public: true,
+    is_phone_public: true,
     is_active: true,
     is_featured: true,
     created_at: '2024-01-15T10:00:00Z',
@@ -45,6 +47,8 @@ const INITIAL_ALUMNI = [
     location: 'New Delhi, India',
     bio: 'Navodaya taught me resilience and empathy. Today I work on cardiovascular clinical research and rural patient care initiatives.',
     profile_image_url: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600',
+    is_email_public: true,
+    is_phone_public: false,
     is_active: true,
     is_featured: true,
     created_at: '2024-01-18T11:20:00Z',
@@ -63,6 +67,8 @@ const INITIAL_ALUMNI = [
     location: 'Kolkata, West Bengal',
     bio: 'Proud alumnus of JNV Nadia. The multi-cultural Navodaya environment shaped my civil service journey and public leadership ethos.',
     profile_image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600',
+    is_email_public: true,
+    is_phone_public: true,
     is_active: true,
     is_featured: true,
     created_at: '2024-01-22T09:15:00Z',
@@ -81,6 +87,8 @@ const INITIAL_ALUMNI = [
     location: 'Bengaluru, Karnataka',
     bio: 'Working on natural language understanding for Indic languages. Cherishing memories of early morning PT and library debates.',
     profile_image_url: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600',
+    is_email_public: false,
+    is_phone_public: false,
     is_active: true,
     is_featured: false,
     created_at: '2024-02-01T14:45:00Z',
@@ -99,6 +107,8 @@ const INITIAL_ALUMNI = [
     location: 'Nadia, West Bengal',
     bio: 'Empowering local smallholders in Bengal with precision drip irrigation and soil testing. JNV instilled true connection to rural roots.',
     profile_image_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600',
+    is_email_public: true,
+    is_phone_public: true,
     is_active: true,
     is_featured: true,
     created_at: '2024-02-05T16:00:00Z',
@@ -117,6 +127,8 @@ const INITIAL_ALUMNI = [
     location: 'Mumbai, Maharashtra',
     bio: 'Designing humane interfaces and storytelling experiences. Forever grateful for the art room and annual day stage back at school.',
     profile_image_url: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600',
+    is_email_public: true,
+    is_phone_public: false,
     is_active: true,
     is_featured: false,
     created_at: '2024-02-12T08:30:00Z',
@@ -135,6 +147,8 @@ const INITIAL_ALUMNI = [
     location: 'Kolkata, West Bengal',
     bio: 'Condensed matter physics researcher. Still remember solving optics problems under streetlamps during campus power outages.',
     profile_image_url: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=600',
+    is_email_public: true,
+    is_phone_public: false,
     is_active: true,
     is_featured: false,
     created_at: '2024-02-15T12:00:00Z',
@@ -153,6 +167,8 @@ const INITIAL_ALUMNI = [
     location: 'Hyderabad, Telangana',
     bio: 'Batch of 2020. Navigating the tech world with the discipline and camaraderie built during our hostel life at JNV Nadia.',
     profile_image_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600',
+    is_email_public: true,
+    is_phone_public: true,
     is_active: true,
     is_featured: false,
     created_at: '2024-02-20T10:15:00Z',
@@ -341,7 +357,14 @@ function setCollection(key, data) {
 }
 
 export const mockDb = {
-  getAlumni: () => getCollection(STORAGE_KEYS.ALUMNI, INITIAL_ALUMNI),
+  getAlumni: () => {
+    const list = getCollection(STORAGE_KEYS.ALUMNI, INITIAL_ALUMNI);
+    return list.map(item => ({
+      ...item,
+      is_email_public: item.is_email_public !== undefined ? item.is_email_public : true,
+      is_phone_public: item.is_phone_public !== undefined ? item.is_phone_public : false,
+    }));
+  },
   setAlumni: (data) => setCollection(STORAGE_KEYS.ALUMNI, data),
 
   getStories: () => getCollection(STORAGE_KEYS.STORIES, INITIAL_STORIES),

@@ -58,12 +58,12 @@ export default function HeroBanner() {
         {/* Right Photographic Campus Backdrop with Smooth Fade and Maroon Wave */}
         <div className="absolute top-0 right-0 w-full lg:w-[60%] h-full pointer-events-none overflow-hidden flex justify-end">
           <img
-            src="/jnv-nadia-hero-campus.png"
+            src="/background.jpg"
             alt="Jawahar Navodaya Vidyalaya Nadia Campus"
             className="h-full w-auto max-w-none object-cover object-left opacity-90 lg:opacity-100 drop-shadow-sm select-none"
           />
-          {/* Subtle multi-stop gradient overlay for seamless blending on smaller screens */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 lg:via-white/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/75 via-35% to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 via-20% to-transparent" />
         </div>
 
         {/* Ambient decorative lighting */}
@@ -113,20 +113,20 @@ export default function HeroBanner() {
       </div>
 
       {/* 4 Floating Quick-Access Cards Row */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10 sm:pb-14 relative z-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 sm:pb-14 relative z-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
           {quickFeatures.map((item) => {
             const Icon = item.icon;
             const content = (
               <>
-                <div className="w-12 h-12 rounded-2xl bg-[#F7EFF3] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
-                  <Icon className="h-6 w-6 text-[#760A21]" />
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#F7EFF3] flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  <Icon className="h-4 w-4 sm:h-6 sm:w-6 text-[#760A21]" />
                 </div>
-                <div>
-                  <h3 className="text-base font-bold text-gray-950 group-hover:text-[#760A21] transition-colors">
+                <div className="min-w-0">
+                  <h3 className="text-xs sm:text-base font-bold text-gray-950 group-hover:text-[#760A21] transition-colors truncate">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-charcoal-500 mt-0.5 leading-normal">
+                  <p className="text-[10px] sm:text-xs text-charcoal-500 mt-0.5 leading-snug line-clamp-2">
                     {item.description}
                   </p>
                 </div>
@@ -139,7 +139,7 @@ export default function HeroBanner() {
                   key={item.title}
                   href={item.link}
                   onClick={(e) => handleCardClick(item, e)}
-                  className="bg-white rounded-2xl p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-stone-100 hover:shadow-[0_8px_30px_rgba(118,10,33,0.08)] hover:-translate-y-1 transition-all flex items-start gap-4 group cursor-pointer"
+                  className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-stone-100 hover:shadow-[0_8px_30px_rgba(118,10,33,0.08)] hover:-translate-y-1 transition-all flex items-start gap-2.5 sm:gap-4 group cursor-pointer"
                 >
                   {content}
                 </a>
@@ -150,7 +150,7 @@ export default function HeroBanner() {
               <Link
                 key={item.title}
                 to={item.link}
-                className="bg-white rounded-2xl p-5 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-stone-100 hover:shadow-[0_8px_30px_rgba(118,10,33,0.08)] hover:-translate-y-1 transition-all flex items-start gap-4 group"
+                className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)] border border-stone-100 hover:shadow-[0_8px_30px_rgba(118,10,33,0.08)] hover:-translate-y-1 transition-all flex items-start gap-2.5 sm:gap-4 group"
               >
                 {content}
               </Link>

@@ -32,7 +32,7 @@ export default function AboutPage() {
         {/* School Campus Photo Card */}
         <div className="overflow-hidden rounded-3xl border border-stone-200/90 shadow-card bg-white">
           <img
-            src="/jnv-nadia-school.jpg"
+            src="/background.jpg"
             alt="Jawahar Navodaya Vidyalaya Nadia Campus and Garden"
             className="w-full h-64 sm:h-80 md:h-96 object-cover object-center"
           />

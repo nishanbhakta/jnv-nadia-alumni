@@ -112,7 +112,10 @@ export function AuthProvider({ children }) {
     companyOrInstitution = '',
     location = '',
     bio = '',
+    jnvStory = '',
     profileImageUrl = '',
+    isEmailPublic = true,
+    isPhonePublic = false,
   }) {
     if (isSupabaseConfigured()) {
       // 1. Create auth user in Supabase
@@ -144,6 +147,8 @@ export function AuthProvider({ children }) {
           email: email.trim().toLowerCase(),
           date_of_birth: dateOfBirth || null, // Stored safely, never publicly selected
           contact_number: contactNumber || null,
+          is_email_public: Boolean(isEmailPublic),
+          is_phone_public: Boolean(isPhonePublic),
           passing_year: parseInt(passingYear, 10),
           current_position: currentPosition || '',
           company_or_institution: companyOrInstitution || '',
@@ -163,6 +168,23 @@ export function AuthProvider({ children }) {
 
       setUser(authUser);
       setProfile(newProfile);
+
+      if (jnvStory.trim()) {
+        const { error: storyError } = await supabase
+          .from('story_sections')
+          .insert({
+            alumni_id: newProfile.id,
+            heading: 'My JNV Life',
+            content: jnvStory.trim(),
+            display_order: 0,
+          });
+
+        if (storyError) {
+          console.error('Failed to save registration story:', storyError);
+          throw storyError;
+        }
+      }
+
       return { user: authUser, profile: newProfile };
     }
 
@@ -181,6 +203,8 @@ export function AuthProvider({ children }) {
       email: email.trim().toLowerCase(),
       date_of_birth: dateOfBirth || null,
       contact_number: contactNumber || null,
+      is_email_public: Boolean(isEmailPublic),
+      is_phone_public: Boolean(isPhonePublic),
       passing_year: parseInt(passingYear, 10),
       current_position: currentPosition || '',
       company_or_institution: companyOrInstitution || '',
@@ -199,6 +223,22 @@ export function AuthProvider({ children }) {
     localStorage.setItem('jnv_mock_user', JSON.stringify(mockUser));
     setUser(mockUser);
     setProfile(newProfile);
+
+    if (jnvStory.trim()) {
+      const stories = mockDb.getStories();
+      mockDb.setStories([
+        {
+          id: `s-mock-${Date.now()}`,
+          alumni_id: newProfile.id,
+          heading: 'My JNV Life',
+          content: jnvStory.trim(),
+          display_order: 0,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        },
+        ...stories,
+      ]);
+    }
 
     return { user: mockUser, profile: newProfile };
   }

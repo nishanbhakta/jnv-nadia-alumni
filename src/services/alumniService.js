@@ -525,6 +525,8 @@ export async function getAlumnusBySlug(slug) {
           bio,
           email,
           contact_number,
+          is_email_public,
+          is_phone_public,
           profile_image_url,
           is_active,
           created_at,
