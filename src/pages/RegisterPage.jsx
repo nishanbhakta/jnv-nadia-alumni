@@ -220,7 +220,7 @@ export default function RegisterPage() {
                     onClick={() => setFormData({ ...formData, isEmailPublic: false })}
                     className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 border transition-all ${
                       !formData.isEmailPublic
-                        ? 'bg-charcoal-800 text-white border-charcoal-800 shadow-2xs'
+                        ? 'bg-stone-800 text-white border-stone-800 shadow-2xs'
                         : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-50'
                     }`}
                   >
@@ -271,7 +271,7 @@ export default function RegisterPage() {
                     onClick={() => setFormData({ ...formData, isPhonePublic: false })}
                     className={`flex-1 py-1 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 border transition-all ${
                       !formData.isPhonePublic
-                        ? 'bg-charcoal-800 text-white border-charcoal-800 shadow-2xs'
+                        ? 'bg-stone-800 text-white border-stone-800 shadow-2xs'
                         : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-50'
                     }`}
                   >

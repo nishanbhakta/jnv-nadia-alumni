@@ -398,7 +398,7 @@ export default function ProfileEditPage() {
                     onClick={() => setPersonalInfo({ ...personalInfo, is_email_public: false })}
                     className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 border transition-all ${
                       !personalInfo.is_email_public
-                        ? 'bg-charcoal-800 text-white border-charcoal-800 shadow-2xs'
+                        ? 'bg-stone-800 text-white border-stone-800 shadow-2xs'
                         : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-100'
                     }`}
                   >
@@ -453,7 +453,7 @@ export default function ProfileEditPage() {
                     onClick={() => setPersonalInfo({ ...personalInfo, is_phone_public: false })}
                     className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 border transition-all ${
                       !personalInfo.is_phone_public
-                        ? 'bg-charcoal-800 text-white border-charcoal-800 shadow-2xs'
+                        ? 'bg-stone-800 text-white border-stone-800 shadow-2xs'
                         : 'bg-white text-charcoal-600 border-stone-200 hover:bg-stone-100'
                     }`}
                   >
