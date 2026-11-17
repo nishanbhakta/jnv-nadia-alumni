@@ -58,7 +58,7 @@ export default function HeroBanner() {
         {/* Right Photographic Campus Backdrop with Smooth Fade */}
         <div className="absolute inset-y-0 right-0 w-full lg:w-[56%] xl:w-[58%] pointer-events-none overflow-hidden select-none">
           <img
-            src="/background.jpg"
+            src="/background.png"
             alt="Jawahar Navodaya Vidyalaya Nadia Campus"
             className="w-full h-full object-cover object-[center_32%] opacity-100 saturate-125 sm:opacity-80 sm:saturate-100 lg:opacity-100 transition-opacity drop-shadow-xs select-none"
           />
