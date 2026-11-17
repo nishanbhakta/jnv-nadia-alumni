@@ -77,8 +77,8 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     `px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
                       isActive
-                        ? 'bg-maroon-800 text-white shadow-2xs hover:bg-maroon-900'
-                        : 'text-charcoal-800 hover:text-maroon-800 hover:bg-stone-50'
+                        ? 'bg-[#760A21] text-white shadow-2xs hover:bg-[#60081A]'
+                        : 'text-charcoal-800 hover:text-[#760A21] hover:bg-stone-50'
                     }`
                   }
                 >
@@ -187,7 +187,7 @@ export default function Navbar() {
               <div className="flex items-center space-x-2">
                 <Link
                   to="/login"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm text-white bg-maroon-800 hover:bg-maroon-900 border border-maroon-900/30 shadow-xs hover:shadow transition-all"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-sm text-white bg-[#760A21] hover:bg-[#60081A] shadow-xs hover:shadow transition-all"
                 >
                   <User className="h-4 w-4" />
                   <span>Sign In</span>
@@ -249,7 +249,7 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     `block px-4 py-2.5 rounded-xl text-sm font-bold transition-colors ${
                       isActive
-                        ? 'text-white bg-maroon-800 shadow-2xs'
+                        ? 'text-white bg-[#760A21] shadow-2xs'
                         : 'text-charcoal-700 hover:bg-stone-50'
                     }`
                   }
@@ -329,7 +329,7 @@ export default function Navbar() {
                 <Link
                   to="/login"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="w-full text-center py-2.5 px-3 text-xs font-bold text-white bg-maroon-800 hover:bg-maroon-900 rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2"
+                  className="w-full text-center py-2.5 px-3 text-xs font-bold text-white bg-[#760A21] hover:bg-[#60081A] rounded-xl shadow-xs transition-colors flex items-center justify-center gap-2"
                 >
                   <User className="h-4 w-4" />
                   <span>Sign In</span>

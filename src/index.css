@@ -57,3 +57,17 @@
 .gold-shimmer {
   background: linear-gradient(135deg, rgba(197, 160, 89, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
 }
+
+/* Explicit brand maroon utilities matching reference mockup */
+.bg-maroon-800 {
+  background-color: #760A21 !important;
+}
+.bg-maroon-900 {
+  background-color: #60081A !important;
+}
+.text-maroon-800 {
+  color: #760A21 !important;
+}
+.border-maroon-800 {
+  border-color: #760A21 !important;
+}
