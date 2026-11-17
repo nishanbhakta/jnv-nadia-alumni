@@ -29,10 +29,10 @@ export default function Navbar() {
       <div className="h-1 w-full tricolor-bar" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo & Branding */}
+        <div className="flex items-center justify-between min-h-[5.5rem] sm:min-h-[6rem] py-2">
+          {/* Logo & Branding on Left Top */}
           <div className="flex-shrink-0">
-            <Logo />
+            <Logo occupyTenPercent={true} />
           </div>
 
           {/* Desktop Navigation */}
